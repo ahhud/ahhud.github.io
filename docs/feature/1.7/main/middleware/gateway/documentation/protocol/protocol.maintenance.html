@@ -7,6 +7,7 @@
   <title>casual domain protocol &mdash; casual  documentation</title>
       <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../_static/casual-32x32.png"/>
   <!--[if lt IE 9]>
     <script src="../../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -646,67 +647,72 @@ loops of this message, depending on the topology of the deployment.</p>
 <td><p>[0..*]</p></td>
 <td><p>byte array with service name</p></td>
 </tr>
-<tr class="row-odd"><td><p>service.timeout.duration</p></td>
+<tr class="row-odd"><td><p>has_value</p></td>
+<td><p>uint8</p></td>
+<td><p>1</p></td>
+<td><p>if 1, deadline.remaining is propagated</p></td>
+</tr>
+<tr class="row-even"><td><p>deadline.remaining</p></td>
 <td><p>uint64</p></td>
 <td><p>8</p></td>
-<td><p>timeout of the service in use (ns)</p></td>
+<td><p>if has_value, the remaining time before deadline (ns)</p></td>
 </tr>
-<tr class="row-even"><td><p>parent.span</p></td>
+<tr class="row-odd"><td><p>parent.span</p></td>
 <td><p>(fixed) binary</p></td>
 <td><p>8</p></td>
 <td><p>parent execution span</p></td>
 </tr>
-<tr class="row-odd"><td><p>parent.service.size</p></td>
+<tr class="row-even"><td><p>parent.service.size</p></td>
 <td><p>uint64</p></td>
 <td><p>8</p></td>
 <td><p>parent service name size</p></td>
 </tr>
-<tr class="row-even"><td><p>parent.service.data</p></td>
+<tr class="row-odd"><td><p>parent.service.data</p></td>
 <td><p>dynamic string</p></td>
 <td><p>[0..*]</p></td>
 <td><p>byte array with parent service name</p></td>
 </tr>
-<tr class="row-odd"><td><p>xid.formatID</p></td>
+<tr class="row-even"><td><p>xid.formatID</p></td>
 <td><p>uint64</p></td>
 <td><p>8</p></td>
 <td><p>xid format type. if 0 no more information of the xid is transported</p></td>
 </tr>
-<tr class="row-even"><td><p>xid.gtrid_length</p></td>
+<tr class="row-odd"><td><p>xid.gtrid_length</p></td>
 <td><p>uint64</p></td>
 <td><p>8</p></td>
 <td><p>length of the transaction gtrid part</p></td>
 </tr>
-<tr class="row-odd"><td><p>xid.bqual_length</p></td>
+<tr class="row-even"><td><p>xid.bqual_length</p></td>
 <td><p>uint64</p></td>
 <td><p>8</p></td>
 <td><p>length of the transaction branch part</p></td>
 </tr>
-<tr class="row-even"><td><p>xid.data</p></td>
+<tr class="row-odd"><td><p>xid.data</p></td>
 <td><p>(fixed) binary</p></td>
 <td><p>32</p></td>
 <td><p>byte array with the size of gtrid_length + bqual_length (max 128)</p></td>
 </tr>
-<tr class="row-odd"><td><p>flags</p></td>
+<tr class="row-even"><td><p>flags</p></td>
 <td><p>uint64</p></td>
 <td><p>8</p></td>
 <td><p>XATMI flags sent to the service</p></td>
 </tr>
-<tr class="row-even"><td><p>buffer.type.size</p></td>
+<tr class="row-odd"><td><p>buffer.type.size</p></td>
 <td><p>uint64</p></td>
 <td><p>8</p></td>
 <td><p>buffer type name size</p></td>
 </tr>
-<tr class="row-odd"><td><p>buffer.type.data</p></td>
+<tr class="row-even"><td><p>buffer.type.data</p></td>
 <td><p>dynamic string</p></td>
 <td><p>[0..*]</p></td>
 <td><p>byte array with buffer type in the form ‘type/subtype’</p></td>
 </tr>
-<tr class="row-even"><td><p>buffer.data.size</p></td>
+<tr class="row-odd"><td><p>buffer.data.size</p></td>
 <td><p>uint64</p></td>
 <td><p>8</p></td>
 <td><p>buffer payload size (could be very big)</p></td>
 </tr>
-<tr class="row-odd"><td><p>buffer.data.data</p></td>
+<tr class="row-even"><td><p>buffer.data.data</p></td>
 <td><p>dynamic binary</p></td>
 <td><p>[0..*]</p></td>
 <td><p>buffer payload data (with the size of buffer.payload.size)</p></td>
@@ -718,7 +724,7 @@ loops of this message, depending on the topology of the deployment.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="nt">execution</span><span class="p">:</span><span class="w"> </span><span class="kt">!!binary</span><span class="w"> </span><span class="s">&quot;cHPL9BRESkGHswCG8UP8YA==&quot;</span>
 <span class="nt">service.name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;service1&quot;</span>
-<span class="nt">service.timeout.duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">42000000000</span>
+<span class="nt">deadline.remaining</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">42000000000</span>
 <span class="nt">parent</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">span</span><span class="p">:</span><span class="w"> </span><span class="kt">!!binary</span><span class="w"> </span><span class="s">&quot;gIGCg4SFhoc=&quot;</span>
 <span class="w">  </span><span class="nt">service</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;parent-service&quot;</span>
@@ -735,7 +741,7 @@ loops of this message, depending on the topology of the deployment.</p>
 </pre></div>
 </div>
 <p>Binary representation of the example (network byte ordering in base64):
-<code class="docutils literal notranslate"><span class="pre">cHPL9BRESkGHswCG8UP8YAAAAAAAAAAIc2VydmljZTEAAAAJx2UkAICBgoOEhYaHAAAAAAAAAA5wYXJlbnQtc2VydmljZQAAAAAAAAAqAAAAAAAAABAAAAAAAAAAEFtsG/byS0gNvbze9Uw6CFFbbBv28ktIDb283vVMOghSAAAAAAAAAAQAAAAAAAAACC5iaW5hcnkvAAAAAAAAAICAgYKDhIWGh4iJiouMjY6PkJGSk5SVlpeYmZqbnJ2en6ChoqOkpaanqKmqq6ytrq+wsbKztLW2t7i5uru8vb6/wMHCw8TFxsfIycrLzM3Oz9DR0tPU1dbX2Nna29zd3t/g4eLj5OXm5+jp6uvs7e7v8PHy8/T19vf4+fr7/P3+/w==</span></code></p>
+<code class="docutils literal notranslate"><span class="pre">cHPL9BRESkGHswCG8UP8YAAAAAAAAAAIc2VydmljZTEBAAAACcdlJACAgYKDhIWGhwAAAAAAAAAOcGFyZW50LXNlcnZpY2UAAAAAAAAAKgAAAAAAAAAQAAAAAAAAABBbbBv28ktIDb283vVMOghRW2wb9vJLSA29vN71TDoIUgAAAAAAAAAEAAAAAAAAAAguYmluYXJ5LwAAAAAAAACAgIGCg4SFhoeIiYqLjI2Oj5CRkpOUlZaXmJmam5ydnp+goaKjpKWmp6ipqqusra6vsLGys7S1tre4ubq7vL2+v8DBwsPExcbHyMnKy8zNzs/Q0dLT1NXW19jZ2tvc3d7f4OHi4+Tl5ufo6err7O3u7/Dx8vP09fb3+Pn6+/z9/v8=</span></code></p>
 </section>
 </section>
 <section id="service-call-v2-3100-1-0-1-1-1-2">
@@ -1961,67 +1967,72 @@ That is, when one or more resources has failed to prepare.</p>
 <td><p>[0..*]</p></td>
 <td><p>data of the service name</p></td>
 </tr>
-<tr class="row-odd"><td><p>service.timeout.duration</p></td>
+<tr class="row-odd"><td><p>has_value</p></td>
+<td><p>uint8</p></td>
+<td><p>1</p></td>
+<td><p>if 1, deadline.remaining is propagated</p></td>
+</tr>
+<tr class="row-even"><td><p>deadline.remaining</p></td>
 <td><p>uint64</p></td>
 <td><p>8</p></td>
-<td><p>timeout (in ns</p></td>
+<td><p>if has_value, the remaining time before deadline (ns)</p></td>
 </tr>
-<tr class="row-even"><td><p>parent.span</p></td>
+<tr class="row-odd"><td><p>parent.span</p></td>
 <td><p>(fixed) binary</p></td>
 <td><p>8</p></td>
 <td><p>parent execution span</p></td>
 </tr>
-<tr class="row-odd"><td><p>parent.service.size</p></td>
+<tr class="row-even"><td><p>parent.service.size</p></td>
 <td><p>uint64</p></td>
 <td><p>8</p></td>
 <td><p>parent service name size</p></td>
 </tr>
-<tr class="row-even"><td><p>parent.service.data</p></td>
+<tr class="row-odd"><td><p>parent.service.data</p></td>
 <td><p>dynamic string</p></td>
 <td><p>[0..*]</p></td>
 <td><p>byte array with parent service name</p></td>
 </tr>
-<tr class="row-odd"><td><p>xid.formatID</p></td>
+<tr class="row-even"><td><p>xid.formatID</p></td>
 <td><p>uint64</p></td>
 <td><p>8</p></td>
 <td><p>xid format type. if 0 no more information of the xid is transported</p></td>
 </tr>
-<tr class="row-even"><td><p>xid.gtrid_length</p></td>
+<tr class="row-odd"><td><p>xid.gtrid_length</p></td>
 <td><p>uint64</p></td>
 <td><p>8</p></td>
 <td><p>length of the transaction gtrid part</p></td>
 </tr>
-<tr class="row-odd"><td><p>xid.bqual_length</p></td>
+<tr class="row-even"><td><p>xid.bqual_length</p></td>
 <td><p>uint64</p></td>
 <td><p>8</p></td>
 <td><p>length of the transaction branch part</p></td>
 </tr>
-<tr class="row-even"><td><p>xid.data</p></td>
+<tr class="row-odd"><td><p>xid.data</p></td>
 <td><p>(fixed) binary</p></td>
 <td><p>32</p></td>
 <td><p>byte array with the size of gtrid_length + bqual_length (max 128)</p></td>
 </tr>
-<tr class="row-odd"><td><p>duplex</p></td>
+<tr class="row-even"><td><p>duplex</p></td>
 <td><p>uint16</p></td>
 <td><p>2</p></td>
 <td><p>in what duplex the callee shall enter (receive:1, send:0)</p></td>
 </tr>
-<tr class="row-even"><td><p>buffer.type.size</p></td>
+<tr class="row-odd"><td><p>buffer.type.size</p></td>
 <td><p>uint64</p></td>
 <td><p>8</p></td>
 <td><p>buffer type name size</p></td>
 </tr>
-<tr class="row-odd"><td><p>buffer.type.data</p></td>
+<tr class="row-even"><td><p>buffer.type.data</p></td>
 <td><p>dynamic string</p></td>
 <td><p>[0..*]</p></td>
 <td><p>byte array with buffer type in the form ‘type/subtype’</p></td>
 </tr>
-<tr class="row-even"><td><p>buffer.data.size</p></td>
+<tr class="row-odd"><td><p>buffer.data.size</p></td>
 <td><p>uint64</p></td>
 <td><p>8</p></td>
 <td><p>buffer payload size (could be very big)</p></td>
 </tr>
-<tr class="row-odd"><td><p>buffer.data.data</p></td>
+<tr class="row-even"><td><p>buffer.data.data</p></td>
 <td><p>dynamic binary</p></td>
 <td><p>[0..*]</p></td>
 <td><p>buffer payload data (with the size of buffer.payload.size)</p></td>
@@ -2033,7 +2044,7 @@ That is, when one or more resources has failed to prepare.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="nt">execution</span><span class="p">:</span><span class="w"> </span><span class="kt">!!binary</span><span class="w"> </span><span class="s">&quot;cHPL9BRESkGHswCG8UP8YA==&quot;</span>
 <span class="nt">service.name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;service1&quot;</span>
-<span class="nt">service.timeout.duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">42000000000</span>
+<span class="nt">deadline.remaining</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">42000000000</span>
 <span class="nt">parent</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">span</span><span class="p">:</span><span class="w"> </span><span class="kt">!!binary</span><span class="w"> </span><span class="s">&quot;gIGCg4SFhoc=&quot;</span>
 <span class="w">  </span><span class="nt">service</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;parent-service&quot;</span>
@@ -2050,7 +2061,7 @@ That is, when one or more resources has failed to prepare.</p>
 </pre></div>
 </div>
 <p>Binary representation of the example (network byte ordering in base64):
-<code class="docutils literal notranslate"><span class="pre">cHPL9BRESkGHswCG8UP8YAAAAAAAAAAIc2VydmljZTEAAAAJx2UkAICBgoOEhYaHAAAAAAAAAA5wYXJlbnQtc2VydmljZQAAAAAAAAAqAAAAAAAAABAAAAAAAAAAEFtsG/byS0gNvbze9Uw6CFFbbBv28ktIDb283vVMOghSAAAAAAAAAAAACC5iaW5hcnkvAAAAAAAAAICAgYKDhIWGh4iJiouMjY6PkJGSk5SVlpeYmZqbnJ2en6ChoqOkpaanqKmqq6ytrq+wsbKztLW2t7i5uru8vb6/wMHCw8TFxsfIycrLzM3Oz9DR0tPU1dbX2Nna29zd3t/g4eLj5OXm5+jp6uvs7e7v8PHy8/T19vf4+fr7/P3+/w==</span></code></p>
+<code class="docutils literal notranslate"><span class="pre">cHPL9BRESkGHswCG8UP8YAAAAAAAAAAIc2VydmljZTEBAAAACcdlJACAgYKDhIWGhwAAAAAAAAAOcGFyZW50LXNlcnZpY2UAAAAAAAAAKgAAAAAAAAAQAAAAAAAAABBbbBv28ktIDb283vVMOghRW2wb9vJLSA29vN71TDoIUgAAAAAAAAAAAAguYmluYXJ5LwAAAAAAAACAgIGCg4SFhoeIiYqLjI2Oj5CRkpOUlZaXmJmam5ydnp+goaKjpKWmp6ipqqusra6vsLGys7S1tre4ubq7vL2+v8DBwsPExcbHyMnKy8zNzs/Q0dLT1NXW19jZ2tvc3d7f4OHi4+Tl5ufo6err7O3u7/Dx8vP09fb3+Pn6+/z9/v8=</span></code></p>
 </section>
 </section>
 <section id="conversation-connect-request-v2-3210-1-0-1-1-1-2">
@@ -2425,7 +2436,11 @@ That is, when one or more resources has failed to prepare.</p>
   <div class="rst-other-versions">
     <dl>
       <dt>Branches</dt>
+      <dd><a href="../../../../../add-documentation-dsl/middleware/gateway/documentation/protocol/protocol.maintenance.html">feature/1.7/add-documentation-dsl</a></dd>
+      <dd><a href="../../../../../fix-links-in-documentation/middleware/gateway/documentation/protocol/protocol.maintenance.html">feature/1.7/fix-links-in-documentation</a></dd>
       <dd><a href="protocol.maintenance.html">feature/1.7/main</a></dd>
+      <dd><a href="../../../../../queue-group-size/middleware/gateway/documentation/protocol/protocol.maintenance.html">feature/1.7/queue-group-size</a></dd>
+      <dd><a href="../../../../../testing-new-buildimage-queue-group-size/middleware/gateway/documentation/protocol/protocol.maintenance.html">feature/1.7/testing-new-buildimage-queue-group-size</a></dd>
       <dd><a href="../../../../../../../patch/1.6/main/middleware/gateway/documentation/protocol/protocol.maintenance.html">patch/1.6/main</a></dd>
       <dd><a href="../../../../../../../release/1.6/middleware/gateway/documentation/protocol/protocol.maintenance.html">release/1.6</a></dd>
     </dl>
