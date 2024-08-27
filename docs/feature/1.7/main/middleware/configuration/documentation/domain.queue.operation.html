@@ -68,6 +68,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../documentation/development.html">development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../documentation/examples.html">examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../documentation/tutorials/operations/README.html">tutorials</a></li>
 </ul>
 
         </div>
@@ -174,6 +175,27 @@ course be used as a mean to help document actual production configuration.</p>
 </tbody>
 </table>
 </section>
+<section id="bytes-string">
+<h3>Bytes : <code class="docutils literal notranslate"><span class="pre">string</span></code><a class="headerlink" href="#bytes-string" title="Permalink to this heading">¶</a></h3>
+<p>A string representation of a quantity of <em>bytes</em>. IEC 80000-13 units up to T/Ti can be used. Example: <code class="docutils literal notranslate"><span class="pre">3B</span></code>, <code class="docutils literal notranslate"><span class="pre">24MiB</span></code>, <code class="docutils literal notranslate"><span class="pre">15MB</span></code>. If no unit is specified, <code class="docutils literal notranslate"><span class="pre">B</span></code> is used.</p>
+</section>
+<section id="capacity-structure">
+<h3>Capacity <em>(structure)</em><a class="headerlink" href="#capacity-structure" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>property</p></th>
+<th class="head"><p>description</p></th>
+<th class="head"><p>default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>[size : <code class="docutils literal notranslate"><span class="pre">Bytes</span></code>]</p></td>
+<td><p>the maximum total size of messages that the group may store</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="domain-queue-groups-list">
 <h3>domain.queue.groups <em>(list)</em><a class="headerlink" href="#domain-queue-groups-list" title="Permalink to this heading">¶</a></h3>
 <p>Defines groups of queues which share the same storage location. Groups has no other meaning.</p>
@@ -195,6 +217,10 @@ course be used as a mean to help document actual production configuration.</p>
 </tr>
 <tr class="row-even"><td><p>[queues : <code class="docutils literal notranslate"><span class="pre">list</span></code>]</p></td>
 <td><p>defines all queues in this group, see below</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>[capacity : <code class="docutils literal notranslate"><span class="pre">capacity</span></code>]</p></td>
+<td><p>limits the storage capacity of the group</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -356,6 +382,13 @@ course be used as a mean to help document actual production configuration.</p>
 <span class="w">        </span><span class="nt">queues</span><span class="p">:</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;c1&quot;</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;c2&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;D&quot;</span>
+<span class="w">        </span><span class="nt">note</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;group</span><span class="nv"> </span><span class="s">limited</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">total</span><span class="nv"> </span><span class="s">message</span><span class="nv"> </span><span class="s">size</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">10KiB,</span><span class="nv"> </span><span class="s">after</span><span class="nv"> </span><span class="s">which</span><span class="nv"> </span><span class="s">further</span><span class="nv"> </span><span class="s">enqueues</span><span class="nv"> </span><span class="s">will</span><span class="nv"> </span><span class="s">give</span><span class="nv"> </span><span class="s">no_queue</span><span class="nv"> </span><span class="s">error&quot;</span>
+<span class="w">        </span><span class="nt">capacity</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">size</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10KiB&quot;</span>
+<span class="w">        </span><span class="nt">queues</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;d1&quot;</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;d2&quot;</span>
 <span class="w">    </span><span class="nt">forward</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">default</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">service</span><span class="p">:</span>
@@ -461,6 +494,21 @@ course be used as a mean to help document actual production configuration.</p>
 <span class="w">                            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;c2&quot;</span>
 <span class="w">                        </span><span class="p">}</span>
 <span class="w">                    </span><span class="p">]</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;alias&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;D&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;group limited to a total message size of 10KiB, after which further enqueues will give no_queue error&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;capacity&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;10KiB&quot;</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="nt">&quot;queues&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;d1&quot;</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;d2&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">]</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">],</span>
 <span class="w">            </span><span class="nt">&quot;forward&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -559,11 +607,7 @@ course be used as a mean to help document actual production configuration.</p>
   <div class="rst-other-versions">
     <dl>
       <dt>Branches</dt>
-      <dd><a href="../../../../add-documentation-dsl/middleware/configuration/documentation/domain.queue.operation.html">feature/1.7/add-documentation-dsl</a></dd>
-      <dd><a href="../../../../fix-links-in-documentation/middleware/configuration/documentation/domain.queue.operation.html">feature/1.7/fix-links-in-documentation</a></dd>
       <dd><a href="domain.queue.operation.html">feature/1.7/main</a></dd>
-      <dd><a href="../../../../queue-group-size/middleware/configuration/documentation/domain.queue.operation.html">feature/1.7/queue-group-size</a></dd>
-      <dd><a href="../../../../testing-new-buildimage-queue-group-size/middleware/configuration/documentation/domain.queue.operation.html">feature/1.7/testing-new-buildimage-queue-group-size</a></dd>
       <dd><a href="../../../../../../patch/1.6/main/middleware/configuration/documentation/domain.queue.operation.html">patch/1.6/main</a></dd>
       <dd><a href="../../../../../../release/1.6/middleware/configuration/documentation/domain.queue.operation.html">release/1.6</a></dd>
     </dl>
