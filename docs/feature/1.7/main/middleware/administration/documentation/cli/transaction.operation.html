@@ -45,7 +45,13 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">introduction</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../README.html">summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html">Get started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#documentation">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#contributing">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#release-notes">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#build-status">Build status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#downloads">Downloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#license">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../documentation/components.html">components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../documentation/user-particles.html">user particles</a></li>
 </ul>
@@ -57,6 +63,7 @@
 <li class="toctree-l3"><a class="reference internal" href="casual.operation.html">casual</a></li>
 <li class="toctree-l3"><a class="reference internal" href="buffer.operation.html">casual buffer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="call.operation.html">casual call</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.operation.html">casual configuration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="describe.operation.html">casual describe</a></li>
 <li class="toctree-l3"><a class="reference internal" href="discovery.operation.html">casual discovery</a></li>
 <li class="toctree-l3"><a class="reference internal" href="domain.operation.html">casual domain</a></li>
@@ -71,6 +78,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.gateway.operation.html">configuration gateway</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.general.operation.html">configuration domain (general)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.queue.operation.html">configuration queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.queue.operation.html#head">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.transaction.operation.html">configuration transaction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/system.operation.html">configuration system</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../buffer/documentation/field.operation.html">field operation</a></li>
@@ -113,68 +121,79 @@
              
   <section id="casual-transaction">
 <h1>casual transaction<a class="headerlink" href="#casual-transaction" title="Permalink to this heading">¶</a></h1>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>host#<span class="w"> </span>casual<span class="w"> </span>--help<span class="w"> </span>transaction
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">host# casual --help transaction</span>
 
-<span class="w">  </span>transaction<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">        </span>transaction<span class="w"> </span>related<span class="w"> </span>administration
+<span class="go">transaction [0..1]</span>
+<span class="go">     transaction related administration</span>
 
-<span class="w">    </span>SUB<span class="w"> </span>OPTIONS
-<span class="w">      </span>-lt,<span class="w"> </span>--list-transactions<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>list<span class="w"> </span>current<span class="w"> </span>transactions
+<span class="go">   SUB OPTIONS:</span>
 
-<span class="w">      </span>-lr,<span class="w"> </span>--list-resources<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>list<span class="w"> </span>all<span class="w"> </span>resources
+<span class="go">      -lt, --list-transactions [0..1]</span>
+<span class="go">           list current transactions</span>
 
-<span class="w">      </span>-li,<span class="w"> </span>--list-instances<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>list<span class="w"> </span>resource<span class="w"> </span>instances
+<span class="go">      -lr, --list-resources [0..1]</span>
+<span class="go">           list all resources</span>
 
-<span class="w">      </span>--list-external-resources<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>list<span class="w"> </span>external<span class="w"> </span>resources
+<span class="go">      -li, --list-instances [0..1]</span>
+<span class="go">           list all resource instances, internal and external</span>
 
-<span class="w">      </span>--begin<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>creates<span class="w"> </span>a<span class="w"> </span><span class="s1">&#39;single&#39;</span><span class="w"> </span>transaction<span class="w"> </span>directive
-<span class="w">            </span>
-<span class="w">            </span>*<span class="w"> </span>creates<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </span>transaction<span class="w"> </span>and<span class="w"> </span>send<span class="w"> </span>it<span class="w"> </span>downstream.
-<span class="w">            </span>*<span class="w"> </span>all<span class="w"> </span>downstream<span class="w"> </span><span class="sb">`</span>actions<span class="sb">`</span><span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>associated<span class="w"> </span>with<span class="w"> </span>this<span class="w"> </span>transaction,<span class="w"> </span><span class="k">until</span><span class="w"> </span>commit/rollback.
-<span class="w">            </span>*<span class="w"> </span>@attention<span class="w"> </span>there<span class="w"> </span>has<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>a<span class="w"> </span>corresponding<span class="w"> </span>commit/rollback<span class="w"> </span>downstream<span class="w"> </span><span class="k">for</span><span class="w"> </span>every<span class="w"> </span>
-<span class="w">               </span>--begin,<span class="w"> </span>otherwise<span class="w"> </span>the<span class="w"> </span>transaction<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>unresolved<span class="w"> </span><span class="o">(</span>indoubt<span class="o">)</span>.
-<span class="w">            </span>
-<span class="w">            </span>@note:<span class="w"> </span>part<span class="w"> </span>of<span class="w"> </span>casual-pipe
+<span class="go">      --list-internal-instances [0..1]</span>
+<span class="go">           list details of all internal resource instances</span>
 
-<span class="w">      </span>--commit<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>tries<span class="w"> </span>to<span class="w"> </span>commit<span class="w"> </span>the<span class="w"> </span>upstream<span class="w"> </span>transaction
-<span class="w">            </span>
-<span class="w">            </span>*<span class="w"> </span>The<span class="w"> </span>current<span class="w"> </span>transaction<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>committed<span class="w"> </span><span class="o">(</span><span class="k">if</span><span class="w"> </span>error<span class="w"> </span>from<span class="w"> </span>upstream<span class="w"> </span>-&gt;<span class="w"> </span>rollback<span class="o">)</span>
-<span class="w">            </span>*<span class="w"> </span>Downstream<span class="w"> </span><span class="sb">`</span>actions<span class="sb">`</span><span class="w"> </span>will<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>associated<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span>current<span class="w"> </span>transaction.
-<span class="w">            </span>
-<span class="w">            </span>@note:<span class="w"> </span>part<span class="w"> </span>of<span class="w"> </span>casual-pipe
+<span class="go">      --list-external-instances [0..1]</span>
+<span class="go">           list external resource instances</span>
+<span class="go">           </span>
+<span class="go">           External resources only have one instance, hence resources and resource-instances are unambiguous.</span>
 
-<span class="w">      </span>--rollback<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>tries<span class="w"> </span>to<span class="w"> </span>rollback<span class="w"> </span>the<span class="w"> </span>upstream<span class="w"> </span>transaction
-<span class="w">            </span>
-<span class="w">            </span>*<span class="w"> </span>The<span class="w"> </span>current<span class="w"> </span>transaction<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>rolled<span class="w"> </span>back.
-<span class="w">            </span>*<span class="w"> </span>Downstream<span class="w"> </span><span class="sb">`</span>actions<span class="sb">`</span><span class="w"> </span>will<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>associated<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span>current<span class="w"> </span>transaction.
-<span class="w">            </span>
-<span class="w">            </span>@note:<span class="w"> </span>part<span class="w"> </span>of<span class="w"> </span>casual-pipe
+<span class="go">      --begin [0..1]</span>
+<span class="go">           creates a &#39;single&#39; transaction directive</span>
+<span class="go">           </span>
+<span class="go">           * creates a new transaction and send it downstream.</span>
+<span class="go">           * all downstream `actions` will be associated with this transaction, until commit/rollback.</span>
+<span class="go">           * @attention there has to be a corresponding commit/rollback downstream for every </span>
+<span class="go">           --begin, otherwise the transaction(s) will be unresolved (indoubt).</span>
+<span class="go">           </span>
+<span class="go">           @note: part of casual-pipe</span>
 
-<span class="w">      </span>-si,<span class="w"> </span>--scale-instances<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>rm-id,<span class="w"> </span><span class="c1"># instances) [0..* {2}]</span>
-<span class="w">            </span>scale<span class="w"> </span>resource<span class="w"> </span>proxy<span class="w"> </span>instances
+<span class="go">      --commit [0..1]</span>
+<span class="go">           tries to commit the upstream transaction</span>
+<span class="go">           </span>
+<span class="go">           * The current transaction will be committed (if error from upstream -&gt; rollback)</span>
+<span class="go">           * Downstream `actions` will not be associated with the current transaction.</span>
+<span class="go">           </span>
+<span class="go">           @note: part of casual-pipe</span>
 
-<span class="w">      </span>-lp,<span class="w"> </span>--list-pending<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>list<span class="w"> </span>pending<span class="w"> </span>tasks
+<span class="go">      --rollback [0..1]</span>
+<span class="go">           tries to rollback the upstream transaction</span>
+<span class="go">           </span>
+<span class="go">           * The current transaction will be rolled back.</span>
+<span class="go">           * Downstream `actions` will not be associated with the current transaction.</span>
+<span class="go">           </span>
+<span class="go">           @note: part of casual-pipe</span>
 
-<span class="w">      </span>--legend<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>list-resources<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">1</span><span class="o">]</span>
-<span class="w">            </span>the<span class="w"> </span>legend<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>supplied<span class="w"> </span>option
-<span class="w">            </span>
-<span class="w">            </span>Documentation<span class="w"> </span>and<span class="w"> </span>description<span class="w"> </span><span class="k">for</span><span class="w"> </span>abbreviations<span class="w"> </span>and<span class="w"> </span>acronyms<span class="w"> </span>used<span class="w"> </span>as<span class="w"> </span>columns<span class="w"> </span><span class="k">in</span><span class="w"> </span>output
-<span class="w">            </span>
-<span class="w">            </span>note:<span class="w"> </span>not<span class="w"> </span>all<span class="w"> </span>options<span class="w"> </span>has<span class="w"> </span>legend,<span class="w"> </span>use<span class="w"> </span><span class="s1">&#39;auto complete&#39;</span><span class="w"> </span>to<span class="w"> </span>find<span class="w"> </span>out<span class="w"> </span>which<span class="w"> </span>legends<span class="w"> </span>are<span class="w"> </span>supported.
+<span class="go">      --scale-resource-proxies [0..1]  (rm-id, # instances) [0..* {2}]</span>
+<span class="go">           scale resource proxy instances</span>
 
-<span class="w">      </span>--information<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>collect<span class="w"> </span>aggregated<span class="w"> </span>information<span class="w"> </span>about<span class="w"> </span>transactions<span class="w"> </span><span class="k">in</span><span class="w"> </span>this<span class="w"> </span>domain
+<span class="go">      -lp, --list-pending [0..1]</span>
+<span class="go">           list pending tasks</span>
 
-<span class="w">      </span>--state<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>json,<span class="w"> </span>yaml,<span class="w"> </span>xml,<span class="w"> </span>ini,<span class="w"> </span>line<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>prints<span class="w"> </span>state<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>provided<span class="w"> </span>format<span class="w"> </span>to<span class="w"> </span>stdout
+<span class="go">      --legend [0..1]</span>
+<span class="go">           the legend for the supplied option</span>
+<span class="go">           </span>
+<span class="go">           Documentation and description for abbreviations and acronyms used as columns in output</span>
+<span class="go">           </span>
+<span class="go">           The following options has legend:</span>
+
+<span class="go">         SUB OPTIONS:</span>
+
+<span class="go">            --list-resources [0..1]</span>
+<span class="go">                 list legend for --list-resources</span>
+
+<span class="go">      --information [0..1]</span>
+<span class="go">           collect aggregated information about transactions in this domain</span>
+
+<span class="go">      --state [0..1]  (json, yaml, xml, ini, line) [0..1]</span>
+<span class="go">           prints state in the provided format to stdout</span>
 </pre></div>
 </div>
 </section>
@@ -214,7 +233,7 @@
     <dl>
       <dt>Branches</dt>
       <dd><a href="transaction.operation.html">feature/1.7/main</a></dd>
-      <dd><a href="../../../../../../../patch/1.6/main/middleware/administration/documentation/cli/transaction.operation.html">patch/1.6/main</a></dd>
+      <dd><a href="../../../../../release-notes/middleware/administration/documentation/cli/transaction.operation.html">feature/1.7/release-notes</a></dd>
       <dd><a href="../../../../../../../release/1.6/middleware/administration/documentation/cli/transaction.operation.html">release/1.6</a></dd>
     </dl>
   </div>

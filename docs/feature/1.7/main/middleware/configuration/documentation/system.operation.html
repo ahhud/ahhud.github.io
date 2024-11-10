@@ -45,7 +45,13 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">introduction</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../README.html">summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html">Get started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html#documentation">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html#contributing">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html#release-notes">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html#build-status">Build status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html#downloads">Downloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html#license">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../documentation/components.html">components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../documentation/user-particles.html">user particles</a></li>
 </ul>
@@ -57,6 +63,7 @@
 <li class="toctree-l2"><a class="reference internal" href="domain.gateway.operation.html">configuration gateway</a></li>
 <li class="toctree-l2"><a class="reference internal" href="domain.general.operation.html">configuration domain (general)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="domain.queue.operation.html">configuration queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domain.queue.operation.html#head">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="domain.transaction.operation.html">configuration transaction</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">configuration system</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../buffer/documentation/field.operation.html">field operation</a></li>
@@ -148,70 +155,13 @@ also used runtime by the transaction-manager</p>
 </table>
 </section>
 <section id="examples">
-<h2>examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
-<p>Below follows examples in <code class="docutils literal notranslate"><span class="pre">yaml</span></code> and <code class="docutils literal notranslate"><span class="pre">json</span></code> <em>(casual can also handle <code class="docutils literal notranslate"><span class="pre">ini</span></code> and <code class="docutils literal notranslate"><span class="pre">xml</span></code>)</em></p>
-<section id="yaml">
-<h3>yaml<a class="headerlink" href="#yaml" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
-<span class="nt">system</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">resources</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;db2&quot;</span>
-<span class="w">      </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;rm-proxy-db2-static&quot;</span>
-<span class="w">      </span><span class="nt">xa_struct_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;db2xa_switch_static_std&quot;</span>
-<span class="w">      </span><span class="nt">libraries</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;db2&quot;</span>
-<span class="w">      </span><span class="nt">paths</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">library</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;${DB2DIR}/lib64&quot;</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;rm-mockup&quot;</span>
-<span class="w">      </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;rm-proxy-casual-mockup&quot;</span>
-<span class="w">      </span><span class="nt">xa_struct_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;casual_mockup_xa_switch_static&quot;</span>
-<span class="w">      </span><span class="nt">libraries</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;casual-mockup-rm&quot;</span>
-<span class="w">      </span><span class="nt">paths</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">library</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;${CASUAL_HOME}/lib&quot;</span>
-<span class="nn">...</span>
-</pre></div>
-</div>
-</section>
-<section id="json">
-<h3>json<a class="headerlink" href="#json" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;resources&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;db2&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;server&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rm-proxy-db2-static&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;xa_struct_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;db2xa_switch_static_std&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;libraries&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="s2">&quot;db2&quot;</span>
-<span class="w">                </span><span class="p">],</span>
-<span class="w">                </span><span class="nt">&quot;paths&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;library&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                        </span><span class="s2">&quot;${DB2DIR}/lib64&quot;</span>
-<span class="w">                    </span><span class="p">]</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rm-mockup&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;server&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rm-proxy-casual-mockup&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;xa_struct_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;casual_mockup_xa_switch_static&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;libraries&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="s2">&quot;casual-mockup-rm&quot;</span>
-<span class="w">                </span><span class="p">],</span>
-<span class="w">                </span><span class="nt">&quot;paths&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;library&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                        </span><span class="s2">&quot;${CASUAL_HOME}/lib&quot;</span>
-<span class="w">                    </span><span class="p">]</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">]</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</section>
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../../../_downloads/513e686bd170844876cd1e43abc360b7/system.yaml"><span class="xref download myst">system.yaml</span></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../../_downloads/b575bec974f043c8176454c60b66c736/system.json"><span class="xref download myst">system.json</span></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../../_downloads/55729cd0c0432b9462b24fbcb35cdacf/system.xml"><span class="xref download myst">system.xml</span></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../../_downloads/4b2e510727502f6be39bfa9ed285b580/system.ini"><span class="xref download myst">system.ini</span></a></p></li>
+</ul>
 </section>
 </section>
 
@@ -250,7 +200,7 @@ also used runtime by the transaction-manager</p>
     <dl>
       <dt>Branches</dt>
       <dd><a href="system.operation.html">feature/1.7/main</a></dd>
-      <dd><a href="../../../../../../patch/1.6/main/middleware/configuration/documentation/system.operation.html">patch/1.6/main</a></dd>
+      <dd><a href="../../../../release-notes/middleware/configuration/documentation/system.operation.html">feature/1.7/release-notes</a></dd>
       <dd><a href="../../../../../../release/1.6/middleware/configuration/documentation/system.operation.html">release/1.6</a></dd>
     </dl>
   </div>

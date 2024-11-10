@@ -45,7 +45,13 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">introduction</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../README.html">summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html">Get started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#documentation">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#contributing">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#release-notes">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#build-status">Build status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#downloads">Downloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#license">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../documentation/components.html">components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../documentation/user-particles.html">user particles</a></li>
 </ul>
@@ -57,6 +63,7 @@
 <li class="toctree-l3"><a class="reference internal" href="casual.operation.html">casual</a></li>
 <li class="toctree-l3"><a class="reference internal" href="buffer.operation.html">casual buffer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="call.operation.html">casual call</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.operation.html">casual configuration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="describe.operation.html">casual describe</a></li>
 <li class="toctree-l3"><a class="reference internal" href="discovery.operation.html">casual discovery</a></li>
 <li class="toctree-l3"><a class="reference internal" href="domain.operation.html">casual domain</a></li>
@@ -71,6 +78,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.gateway.operation.html">configuration gateway</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.general.operation.html">configuration domain (general)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.queue.operation.html">configuration queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.queue.operation.html#head">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.transaction.operation.html">configuration transaction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/system.operation.html">configuration system</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../buffer/documentation/field.operation.html">field operation</a></li>
@@ -113,138 +121,168 @@
              
   <section id="casual-queue">
 <h1>casual queue<a class="headerlink" href="#casual-queue" title="Permalink to this heading">¶</a></h1>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>host#<span class="w"> </span>casual<span class="w"> </span>--help<span class="w"> </span>queue
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">host# casual --help queue</span>
 
-<span class="w">  </span>queue<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">        </span>queue<span class="w"> </span>related<span class="w"> </span>administration
+<span class="go">queue [0..1]</span>
+<span class="go">     queue related administration</span>
 
-<span class="w">    </span>SUB<span class="w"> </span>OPTIONS
-<span class="w">      </span>-q,<span class="w"> </span>--list-queues<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>list<span class="w"> </span>information<span class="w"> </span>of<span class="w"> </span>all<span class="w"> </span>queues<span class="w"> </span><span class="k">in</span><span class="w"> </span>current<span class="w"> </span>domain
+<span class="go">   SUB OPTIONS:</span>
 
-<span class="w">      </span>-z,<span class="w"> </span>--list-zombies<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>list<span class="w"> </span>information<span class="w"> </span>of<span class="w"> </span>all<span class="w"> </span>zombie<span class="w"> </span>queues<span class="w"> </span><span class="k">in</span><span class="w"> </span>current<span class="w"> </span>domain
+<span class="go">      -q, --list-queues [0..1]</span>
+<span class="go">           list information of all queues in current domain</span>
 
-<span class="w">      </span>-r,<span class="w"> </span>--list-remote<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>list<span class="w"> </span>all<span class="w"> </span>remote<span class="w"> </span>discovered<span class="w"> </span>queues
+<span class="go">      -z, --list-zombies [0..1]</span>
+<span class="go">           list information of all zombie queues in current domain</span>
 
-<span class="w">      </span>-g,<span class="w"> </span>--list-groups<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>list<span class="w"> </span>information<span class="w"> </span>of<span class="w"> </span>all<span class="w"> </span>groups<span class="w"> </span><span class="k">in</span><span class="w"> </span>current<span class="w"> </span>domain
+<span class="go">      -lqi, --list-queue-instances [0..1]</span>
+<span class="go">           list instances for all queues, including external instances</span>
 
-<span class="w">      </span>-m,<span class="w"> </span>--list-messages<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>&lt;queue&gt;<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">1</span><span class="o">]</span>
-<span class="w">            </span>list<span class="w"> </span>information<span class="w"> </span>of<span class="w"> </span>all<span class="w"> </span>messages<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>provided<span class="w"> </span>queue
+<span class="go">      -g, --list-groups [0..1]</span>
+<span class="go">           list information of all groups in current domain</span>
 
-<span class="w">      </span>--list-forward-services<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>list<span class="w"> </span>information<span class="w"> </span>of<span class="w"> </span>all<span class="w"> </span>service<span class="w"> </span>forwards
+<span class="go">      -m, --list-messages [0..1]  (&lt;queue&gt;) [1]</span>
+<span class="go">           list information of all messages of the provided queue</span>
 
-<span class="w">      </span>--list-forward-queues<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>list<span class="w"> </span>information<span class="w"> </span>of<span class="w"> </span>all<span class="w"> </span>queue<span class="w"> </span>forwards
+<span class="go">      --list-forward-services [0..1]</span>
+<span class="go">           list information of all service forwards</span>
 
-<span class="w">      </span>--list-forward-groups<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>list<span class="w"> </span><span class="o">(</span>aggregated<span class="o">)</span><span class="w"> </span>information<span class="w"> </span>of<span class="w"> </span>forward<span class="w"> </span>groups
+<span class="go">      --list-forward-queues [0..1]</span>
+<span class="go">           list information of all queue forwards</span>
 
-<span class="w">      </span>--restore<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>&lt;queue&gt;<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">0</span>..*<span class="o">]</span>
-<span class="w">            </span>restores<span class="w"> </span>messages<span class="w"> </span>to<span class="w"> </span>queue
-<span class="w">            </span>
-<span class="w">            </span>Messages<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>restored<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>queue<span class="w"> </span>they<span class="w"> </span>first<span class="w"> </span>was<span class="w"> </span>enqueued<span class="w"> </span>to<span class="w"> </span><span class="o">(</span>within<span class="w"> </span>the<span class="w"> </span>same<span class="w"> </span>queue-group<span class="o">)</span>
-<span class="w">            </span>
-<span class="w">            </span>Example:
-<span class="w">            </span>casual<span class="w"> </span>queue<span class="w"> </span>--restore<span class="w"> </span>&lt;queue-name&gt;
+<span class="go">      --list-forward-groups [0..1]</span>
+<span class="go">           list (aggregated) information of forward groups</span>
 
-<span class="w">      </span>-e,<span class="w"> </span>--enqueue<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>&lt;queue&gt;<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">1</span><span class="o">]</span>
-<span class="w">            </span>enqueue<span class="w"> </span>buffer<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>queue<span class="w"> </span>from<span class="w"> </span>stdin
-<span class="w">            </span>
-<span class="w">            </span>Assumes<span class="w"> </span>a<span class="w"> </span>conformant<span class="w"> </span>buffer<span class="o">(</span>s<span class="o">)</span>
-<span class="w">            </span>
-<span class="w">            </span>Example:
-<span class="w">            </span>cat<span class="w"> </span>somefile.bin<span class="w"> </span><span class="p">|</span><span class="w"> </span>casual<span class="w"> </span>queue<span class="w"> </span>--enqueue<span class="w"> </span>&lt;queue-name&gt;
-<span class="w">            </span>
-<span class="w">            </span>@note:<span class="w"> </span>part<span class="w"> </span>of<span class="w"> </span>casual-pipe
+<span class="go">      --restore [0..1]  (&lt;queue&gt;) [0..*]</span>
+<span class="go">           restores messages to queue</span>
+<span class="go">           </span>
+<span class="go">           Messages will be restored to the queue they first was enqueued to (within the same queue-group)</span>
+<span class="go">           </span>
+<span class="go">           Example:</span>
+<span class="go">           casual queue --restore &lt;queue-name&gt;</span>
 
-<span class="w">      </span>-d,<span class="w"> </span>--dequeue<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>&lt;queue&gt;,<span class="w"> </span><span class="o">[</span>&lt;id&gt;<span class="o">])</span><span class="w"> </span><span class="o">[</span><span class="m">1</span>..2<span class="o">]</span>
-<span class="w">            </span>dequeue<span class="w"> </span>message<span class="w"> </span>from<span class="w"> </span>a<span class="w"> </span>queue<span class="w"> </span>to<span class="w"> </span><span class="sb">`</span>casual-pipe<span class="sb">`</span>
-<span class="w">            </span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span>id<span class="w"> </span>is<span class="w"> </span>absent<span class="w"> </span>the<span class="w"> </span>oldest<span class="w"> </span>available<span class="w"> </span>message<span class="w"> </span>is<span class="w"> </span>dequeued.<span class="w"> </span>
-<span class="w">            </span>
-<span class="w">            </span>Example:
-<span class="w">            </span>casual<span class="w"> </span>queue<span class="w"> </span>--dequeue<span class="w"> </span>&lt;queue&gt;<span class="w"> </span><span class="p">|</span><span class="w"> </span>&lt;some<span class="w"> </span>other<span class="w"> </span>part<span class="w"> </span><span class="k">in</span><span class="w"> </span>casual-pipe&gt;<span class="w"> </span><span class="p">|</span><span class="w"> </span>...<span class="w"> </span><span class="p">|</span><span class="w"> </span>&lt;casual-pipe<span class="w"> </span>termination&gt;
-<span class="w">            </span>casual<span class="w"> </span>queue<span class="w"> </span>--dequeue<span class="w"> </span>&lt;queue&gt;<span class="w"> </span>&lt;id&gt;<span class="w"> </span><span class="p">|</span><span class="w"> </span>&lt;some<span class="w"> </span>other<span class="w"> </span>part<span class="w"> </span><span class="k">in</span><span class="w"> </span>casual-pipe&gt;<span class="w"> </span><span class="p">|</span><span class="w"> </span>...<span class="w"> </span><span class="p">|</span><span class="w"> </span>&lt;casual-pipe<span class="w"> </span>termination&gt;
-<span class="w">            </span>
-<span class="w">            </span>@note:<span class="w"> </span>part<span class="w"> </span>of<span class="w"> </span>casual-pipe
+<span class="go">      -e, --enqueue [0..1]  (&lt;queue&gt;) [1]</span>
+<span class="go">           enqueue buffer(s) to a queue from stdin</span>
+<span class="go">           </span>
+<span class="go">           Assumes a conformant buffer(s)</span>
+<span class="go">           </span>
+<span class="go">           Example:</span>
+<span class="go">           cat somefile.bin | casual queue --enqueue &lt;queue-name&gt;</span>
+<span class="go">           </span>
+<span class="go">           @note: part of casual-pipe</span>
 
-<span class="w">      </span>-p,<span class="w"> </span>--peek<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>&lt;queue&gt;,<span class="w"> </span><span class="o">[</span>&lt;id&gt;<span class="o">])</span><span class="w"> </span><span class="o">[</span><span class="m">1</span>..*<span class="o">]</span>
-<span class="w">            </span>peeks<span class="w"> </span>messages<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>give<span class="w"> </span>queue<span class="w"> </span>and<span class="w"> </span>streams<span class="w"> </span>them<span class="w"> </span>to<span class="w"> </span>casual-pipe
-<span class="w">            </span>
-<span class="w">            </span>Example:
-<span class="w">            </span>casual<span class="w"> </span>queue<span class="w"> </span>--peek<span class="w"> </span>&lt;queue-name&gt;<span class="w"> </span>&lt;id1&gt;<span class="w"> </span>&lt;id2&gt;<span class="w"> </span><span class="p">|</span><span class="w"> </span>&lt;some<span class="w"> </span>other<span class="w"> </span>part<span class="w"> </span>of<span class="w"> </span>casual-pipe&gt;<span class="w"> </span><span class="p">|</span><span class="w"> </span>...<span class="w"> </span><span class="p">|</span><span class="w"> </span>&lt;casual-pipe-termination&gt;
-<span class="w">            </span>
-<span class="w">            </span>@note:<span class="w"> </span>part<span class="w"> </span>of<span class="w"> </span>casual-pipe
+<span class="go">      -d, --dequeue [0..1]  (&lt;queue&gt;, [&lt;id&gt;..]) [1..*]</span>
+<span class="go">           dequeue message from a queue to `casual-pipe`</span>
+<span class="go">           </span>
+<span class="go">           if id is absent the oldest available message is dequeued. </span>
+<span class="go">           </span>
+<span class="go">           Example:</span>
+<span class="go">           casual queue --dequeue &lt;queue&gt; | &lt;some other part in casual-pipe&gt; | ... | &lt;casual-pipe termination&gt;</span>
+<span class="go">           casual queue --dequeue &lt;queue&gt; &lt;id&gt; | &lt;some other part in casual-pipe&gt; | ... | &lt;casual-pipe termination&gt;</span>
+<span class="go">           casual queue --dequeue &lt;queue&gt; &lt;id&gt; &lt;id&gt; &lt;id&gt; &lt;id&gt; | &lt;some other part in casual-pipe&gt; | ... | &lt;casual-pipe termination&gt;</span>
+<span class="go">           </span>
+<span class="go">           </span>
+<span class="go">           @note: part of casual-pipe</span>
 
-<span class="w">      </span>--consume<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>&lt;queue&gt;,<span class="w"> </span>&lt;count&gt;<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">1</span>..2<span class="o">]</span>
-<span class="w">            </span>consumes<span class="w"> </span>up<span class="w"> </span>to<span class="w"> </span><span class="sb">`</span>count<span class="sb">`</span><span class="w"> </span>messages<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>provided<span class="w"> </span><span class="sb">`</span>queue<span class="sb">`</span><span class="w"> </span>and<span class="w"> </span>send<span class="w"> </span>it<span class="w"> </span>downstream
-<span class="w">            </span>
-<span class="w">            </span>Example:
-<span class="w">            </span>casual<span class="w"> </span>queue<span class="w"> </span>--consume<span class="w"> </span>&lt;queue-name&gt;<span class="w"> </span><span class="o">[</span>&lt;count&gt;<span class="o">]</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>&lt;some<span class="w"> </span>other<span class="w"> </span>part<span class="w"> </span>of<span class="w"> </span>casual-pipe&gt;<span class="w"> </span><span class="p">|</span><span class="w"> </span>...<span class="w"> </span><span class="p">|</span><span class="w"> </span>&lt;casual-pipe-termination&gt;
-<span class="w">            </span>
-<span class="w">            </span>@note:<span class="w"> </span>part<span class="w"> </span>of<span class="w"> </span>casual-pipe
+<span class="go">      -p, --peek [0..1]  (&lt;queue&gt;, [&lt;id&gt;]) [1..*]</span>
+<span class="go">           peeks messages from the give queue and streams them to casual-pipe</span>
+<span class="go">           </span>
+<span class="go">           Example:</span>
+<span class="go">           casual queue --peek &lt;queue-name&gt; &lt;id1&gt; &lt;id2&gt; | &lt;some other part of casual-pipe&gt; | ... | &lt;casual-pipe-termination&gt;</span>
+<span class="go">           </span>
+<span class="go">           @note: part of casual-pipe</span>
 
-<span class="w">      </span>--attributes<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>&lt;attribute-name&gt;,<span class="w"> </span>&lt;value&gt;<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">2</span>..*<span class="w"> </span><span class="o">{</span><span class="m">2</span><span class="o">}]</span>
-<span class="w">            </span>INCUBATION<span class="w"> </span>-<span class="w"> </span>adds<span class="w"> </span>or<span class="w"> </span>mutates<span class="w"> </span>queue<span class="w"> </span>message<span class="w"> </span>attributes<span class="w"> </span>on<span class="w"> </span>piped<span class="w"> </span>messages
-<span class="w">            </span>
-<span class="w">            </span>@attention<span class="w"> </span>INCUBATION<span class="w"> </span>-<span class="w"> </span>might<span class="w"> </span>change<span class="w"> </span>during.<span class="w"> </span>or<span class="w"> </span><span class="k">in</span><span class="w"> </span>between<span class="w"> </span>minor<span class="w"> </span>version.
-<span class="w">            </span>
-<span class="w">            </span>Valid<span class="w"> </span>attributes:
-<span class="w">            </span>*<span class="w"> </span>properties<span class="w">  </span><span class="p">|</span><span class="w"> </span>user<span class="w"> </span>defined<span class="w"> </span>string
-<span class="w">            </span>*<span class="w"> </span>reply<span class="w">       </span><span class="p">|</span><span class="w"> </span>queue<span class="w"> </span>name
-<span class="w">            </span>*<span class="w"> </span>available<span class="w">   </span><span class="p">|</span><span class="w"> </span>absolute<span class="w"> </span><span class="nb">time</span><span class="w"> </span>since<span class="w"> </span>epoch<span class="w"> </span><span class="o">([</span>+<span class="o">]</span>?&lt;value&gt;<span class="o">[</span>h<span class="p">|</span>min<span class="p">|</span>s<span class="p">|</span>ms<span class="p">|</span>us<span class="p">|</span>ns<span class="o">])</span>+
-<span class="w">            </span>
-<span class="w">            </span>Example:
-<span class="w">            </span><span class="sb">`</span>$<span class="w"> </span>casual<span class="w"> </span>queue<span class="w"> </span>--dequeue<span class="w"> </span>a<span class="w"> </span><span class="p">|</span><span class="w"> </span>casual<span class="w"> </span>queue<span class="w"> </span>--attributes<span class="w"> </span>reply<span class="w"> </span>a.reply<span class="w"> </span>properties<span class="w"> </span>foo<span class="w"> </span><span class="p">|</span><span class="w"> </span>casual<span class="w"> </span>queue<span class="w"> </span>--enqueue<span class="w"> </span>a<span class="sb">`</span>
-<span class="w">            </span>
-<span class="w">            </span>@note:<span class="w"> </span>Can<span class="w"> </span>be<span class="w"> </span>used<span class="w"> </span>to<span class="w"> </span>add<span class="w"> </span>queue<span class="w"> </span>attributes<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>service<span class="w"> </span>reply_
-<span class="w">            </span>@note:<span class="w"> </span>part<span class="w"> </span>of<span class="w"> </span>casual-pipe
+<span class="go">      --consume [0..1]  (&lt;queue&gt;, &lt;count&gt;) [1..2]</span>
+<span class="go">           consumes up to `count` messages from the provided `queue` and send it downstream</span>
+<span class="go">           </span>
+<span class="go">           Example:</span>
+<span class="go">           casual queue --consume &lt;queue-name&gt; [&lt;count&gt;] | &lt;some other part of casual-pipe&gt; | ... | &lt;casual-pipe-termination&gt;</span>
+<span class="go">           </span>
+<span class="go">           @note: part of casual-pipe</span>
 
-<span class="w">      </span>--clear<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>&lt;queue&gt;<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">1</span>..*<span class="o">]</span>
-<span class="w">            </span>clears<span class="w"> </span>all<span class="w"> </span>messages<span class="w"> </span>from<span class="w"> </span>provided<span class="w"> </span>queues
-<span class="w">            </span>
-<span class="w">            </span>Example:
-<span class="w">            </span>casual<span class="w"> </span>queue<span class="w"> </span>--clear<span class="w"> </span>a<span class="w"> </span>b<span class="w"> </span>c
+<span class="go">      --attributes [0..1]  (&lt;attribute-name&gt;, &lt;value&gt;) [2..*]</span>
+<span class="go">           INCUBATION - adds or mutates queue message attributes on piped messages</span>
+<span class="go">           </span>
+<span class="go">           @attention INCUBATION - might change during. or in between minor version.</span>
+<span class="go">           </span>
+<span class="go">           Valid attributes:</span>
+<span class="go">           * properties  | user defined string</span>
+<span class="go">           * reply       | queue name</span>
+<span class="go">           * available   | absolute time since epoch ([+]?&lt;value&gt;[h|min|s|ms|us|ns])+</span>
+<span class="go">           </span>
+<span class="go">           Example:</span>
+<span class="go">           `$ casual queue --dequeue a | casual queue --attributes reply a.reply properties foo | casual queue --enqueue a`</span>
+<span class="go">           </span>
+<span class="go">           @note: Can be used to add queue attributes to a service reply_</span>
+<span class="go">           @note: part of casual-pipe</span>
 
-<span class="w">      </span>--remove-messages<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>&lt;queue&gt;,<span class="w"> </span>&lt;id&gt;<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">2</span>..*<span class="o">]</span>
-<span class="w">            </span>removes<span class="w"> </span>specific<span class="w"> </span>messages<span class="w"> </span>from<span class="w"> </span>a<span class="w"> </span>given<span class="w"> </span>queue
+<span class="go">      --clear [0..1]  (&lt;queue&gt;) [1..*]</span>
+<span class="go">           clears all messages from provided queues</span>
+<span class="go">           </span>
+<span class="go">           Example:</span>
+<span class="go">           casual queue --clear a b c</span>
 
-<span class="w">      </span>--recover-transactions-commit<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>&lt;gtrid&gt;<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">1</span>..*<span class="o">]</span>
-<span class="w">            </span>recover<span class="w"> </span>specific<span class="w"> </span>messages<span class="w"> </span>from<span class="w"> </span>a<span class="w"> </span>given<span class="w"> </span>queue<span class="w"> </span>with<span class="w"> </span>commit
+<span class="go">      --remove-messages [0..1]  (&lt;queue&gt;, &lt;id&gt;) [2..*]</span>
+<span class="go">           removes specific messages from a given queue</span>
+<span class="go">           </span>
+<span class="go">           if used with `--force true` messages will be removed regardless of state.</span>
 
-<span class="w">      </span>--recover-transactions-rollback<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>&lt;gtrid&gt;<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">1</span>..*<span class="o">]</span>
-<span class="w">            </span>recover<span class="w"> </span>specific<span class="w"> </span>messages<span class="w"> </span>from<span class="w"> </span>a<span class="w"> </span>given<span class="w"> </span>queue<span class="w"> </span>with<span class="w"> </span>rollback
+<span class="go">         SUB OPTIONS:</span>
 
-<span class="w">      </span>--forward-scale-aliases<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>&lt;alias&gt;,<span class="w"> </span>&lt;<span class="c1"># instances&gt;) [2..* {2}]</span>
-<span class="w">            </span>scales<span class="w"> </span>forward<span class="w"> </span>aliases<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>requested<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>instances
-<span class="w">            </span>
-<span class="w">            </span>Example:
-<span class="w">            </span>casual<span class="w"> </span>queue<span class="w"> </span>--forward-scale-aliases<span class="w"> </span>a<span class="w"> </span><span class="m">2</span><span class="w"> </span>b<span class="w"> </span><span class="m">0</span><span class="w"> </span>c<span class="w"> </span><span class="m">10</span>
+<span class="go">            --force [0..1]</span>
+<span class="go">                 force removal of message regardless of state</span>
 
-<span class="w">      </span>--metric-reset<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>&lt;queue&gt;<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">1</span>..*<span class="o">]</span>
-<span class="w">            </span>resets<span class="w"> </span>metrics<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>provided<span class="w"> </span>queues
-<span class="w">            </span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span>no<span class="w"> </span>queues<span class="w"> </span>are<span class="w"> </span>provided,<span class="w"> </span>metrics<span class="w"> </span><span class="k">for</span><span class="w"> </span>all<span class="w"> </span>queues<span class="w"> </span>are<span class="w"> </span>reset.
-<span class="w">            </span>
-<span class="w">            </span>Example:
-<span class="w">            </span>casual<span class="w"> </span>queue<span class="w"> </span>--metric-reset<span class="w"> </span>a<span class="w"> </span>b
+<span class="go">      --recover-transactions-commit [0..1]  (&lt;gtrid&gt;) [1..*]</span>
+<span class="go">           recover specific messages from a given queue with commit</span>
 
-<span class="w">      </span>--legend<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>list-queues,<span class="w"> </span>list-messages,<span class="w"> </span>list-forward-groups,<span class="w"> </span>list-forward-services,<span class="w"> </span>list-forward-queues<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">1</span><span class="o">]</span>
-<span class="w">            </span>provide<span class="w"> </span>legend<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>output<span class="w"> </span><span class="k">for</span><span class="w"> </span>some<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>options
-<span class="w">            </span>
-<span class="w">            </span>to<span class="w"> </span>view<span class="w"> </span>legend<span class="w"> </span><span class="k">for</span><span class="w"> </span>--list-queues<span class="w"> </span>use<span class="w"> </span>casual<span class="w"> </span>queue<span class="w"> </span>--legend<span class="w"> </span>list-queues,<span class="w"> </span>and<span class="w"> </span>so<span class="w"> </span>on.
-<span class="w">            </span>
-<span class="w">            </span>use<span class="w"> </span>auto-complete<span class="w"> </span>to<span class="w"> </span><span class="nb">help</span><span class="w"> </span>which<span class="w"> </span>options<span class="w"> </span>has<span class="w"> </span>legends
+<span class="go">      --recover-transactions-rollback [0..1]  (&lt;gtrid&gt;) [1..*]</span>
+<span class="go">           recover specific messages from a given queue with rollback</span>
 
-<span class="w">      </span>--information<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>collect<span class="w"> </span>aggregated<span class="w"> </span>information<span class="w"> </span>about<span class="w"> </span>queues<span class="w"> </span><span class="k">in</span><span class="w"> </span>this<span class="w"> </span>domain
+<span class="go">      --forward-scale-aliases [0..1]  (&lt;alias&gt;, &lt;# instances&gt;) [2..*]</span>
+<span class="go">           scales forward aliases to the requested number of instances</span>
+<span class="go">           </span>
+<span class="go">           Example:</span>
+<span class="go">           casual queue --forward-scale-aliases a 2 b 0 c 10</span>
 
-<span class="w">      </span>--state<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>json,<span class="w"> </span>yaml,<span class="w"> </span>xml,<span class="w"> </span>ini,<span class="w"> </span>line<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>prints<span class="w"> </span>state<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>provided<span class="w"> </span>format<span class="w"> </span>to<span class="w"> </span>stdout
+<span class="go">      --metric-reset [0..1]  (&lt;queue&gt;) [1..*]</span>
+<span class="go">           resets metrics for the provided queues</span>
+<span class="go">           </span>
+<span class="go">           if no queues are provided, metrics for all queues are reset.</span>
+<span class="go">           </span>
+<span class="go">           Example:</span>
+<span class="go">           casual queue --metric-reset a b</span>
+
+<span class="go">      --legend [0..1]</span>
+<span class="go">           provide legend for the output for some of the options</span>
+<span class="go">           </span>
+<span class="go">           to view legend for --list-queues use casual queue --legend --list-queues, and so on.</span>
+<span class="go">           </span>
+<span class="go">           The following options has legend:</span>
+
+<span class="go">         SUB OPTIONS:</span>
+
+<span class="go">            --list-queues [0..1]</span>
+<span class="go">                 list legend for --list-queues</span>
+
+<span class="go">            --list-messages [0..1]</span>
+<span class="go">                 list legend for --list-messages</span>
+
+<span class="go">            --list-forward-groups [0..1]</span>
+<span class="go">                 list legend for --list-forward-groups</span>
+
+<span class="go">            --list-forward-services [0..1]</span>
+<span class="go">                 list legend for --list-forward-services</span>
+
+<span class="go">            --list-forward-queues [0..1]</span>
+<span class="go">                 list legend for --list-forward-queues</span>
+
+<span class="go">      --information [0..1]</span>
+<span class="go">           collect aggregated information about queues in this domain</span>
+
+<span class="go">      --state [0..1]  (json, yaml, xml, ini, line) [0..1]</span>
+<span class="go">           prints state in the provided format to stdout</span>
+
+<span class="go">      [deprecated] -r, --list-remote [0..1]</span>
+<span class="go">           deprecated - use --list-instances</span>
 </pre></div>
 </div>
 </section>
@@ -284,7 +322,7 @@
     <dl>
       <dt>Branches</dt>
       <dd><a href="queue.operation.html">feature/1.7/main</a></dd>
-      <dd><a href="../../../../../../../patch/1.6/main/middleware/administration/documentation/cli/queue.operation.html">patch/1.6/main</a></dd>
+      <dd><a href="../../../../../release-notes/middleware/administration/documentation/cli/queue.operation.html">feature/1.7/release-notes</a></dd>
       <dd><a href="../../../../../../../release/1.6/middleware/administration/documentation/cli/queue.operation.html">release/1.6</a></dd>
     </dl>
   </div>

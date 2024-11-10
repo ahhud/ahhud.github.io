@@ -45,7 +45,13 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">introduction</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../README.html">summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html">Get started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#documentation">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#contributing">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#release-notes">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#build-status">Build status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#downloads">Downloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#license">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../documentation/components.html">components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../documentation/user-particles.html">user particles</a></li>
 </ul>
@@ -57,6 +63,7 @@
 <li class="toctree-l3"><a class="reference internal" href="casual.operation.html">casual</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">casual buffer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="call.operation.html">casual call</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.operation.html">casual configuration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="describe.operation.html">casual describe</a></li>
 <li class="toctree-l3"><a class="reference internal" href="discovery.operation.html">casual discovery</a></li>
 <li class="toctree-l3"><a class="reference internal" href="domain.operation.html">casual domain</a></li>
@@ -71,6 +78,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.gateway.operation.html">configuration gateway</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.general.operation.html">configuration domain (general)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.queue.operation.html">configuration queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.queue.operation.html#head">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.transaction.operation.html">configuration transaction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/system.operation.html">configuration system</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../buffer/documentation/field.operation.html">field operation</a></li>
@@ -113,54 +121,55 @@
              
   <section id="casual-buffer">
 <h1>casual buffer<a class="headerlink" href="#casual-buffer" title="Permalink to this heading">¶</a></h1>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>host#<span class="w"> </span>casual<span class="w"> </span>--help<span class="w"> </span>buffer
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">host# casual --help buffer</span>
 
-<span class="w">  </span>buffer<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">        </span>buffer<span class="w"> </span>related<span class="w"> </span><span class="s1">&#39;tools&#39;</span>
+<span class="go">buffer [0..1]</span>
+<span class="go">     buffer related &#39;tools&#39;</span>
 
-<span class="w">    </span>SUB<span class="w"> </span>OPTIONS
-<span class="w">      </span>--field-from-human<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>json,<span class="w"> </span>yaml,<span class="w"> </span>xml,<span class="w"> </span>ini<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>transform<span class="w"> </span>human<span class="w"> </span>readable<span class="w"> </span>fielded<span class="w"> </span>buffer<span class="w"> </span>to<span class="w"> </span>actual<span class="w"> </span>buffers
-<span class="w">            </span>
-<span class="w">            </span>reads<span class="w"> </span>from<span class="w"> </span>stdin<span class="w"> </span>and<span class="w"> </span>assumes<span class="w"> </span>a<span class="w"> </span>human<span class="w"> </span>readable<span class="w"> </span>structure<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>supplied<span class="w"> </span>format
-<span class="w">            </span><span class="k">for</span><span class="w"> </span>a<span class="w"> </span>casual-fielded-buffer,<span class="w"> </span>and<span class="w"> </span>transform<span class="w"> </span>this<span class="w"> </span>to<span class="w"> </span>an<span class="w"> </span>actual<span class="w"> </span>casual-fielded-buffer,
-<span class="w">            </span>and<span class="w"> </span>forward<span class="w"> </span>this<span class="w"> </span>to<span class="w"> </span>stdout<span class="w"> </span><span class="k">for</span><span class="w"> </span>other<span class="w"> </span>downstream<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>pipeline<span class="w"> </span>to<span class="w"> </span>consume
-<span class="w">            </span>
-<span class="w">            </span>@note:<span class="w"> </span>part<span class="w"> </span>of<span class="w"> </span>casual-pipe
+<span class="go">   SUB OPTIONS:</span>
 
-<span class="w">      </span>--field-to-human<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>json,<span class="w"> </span>yaml,<span class="w"> </span>xml,<span class="w"> </span>ini<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>reads<span class="w"> </span>from<span class="w"> </span>stdin<span class="w"> </span>and<span class="w"> </span>assumes<span class="w"> </span>a<span class="w"> </span>casual-fielded-buffer
-<span class="w">            </span>
-<span class="w">            </span>and<span class="w"> </span>transform<span class="w"> </span>this<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>human<span class="w"> </span>readable<span class="w"> </span>structure<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>supplied<span class="w"> </span>format,
-<span class="w">            </span>and<span class="w"> </span>prints<span class="w"> </span>this<span class="w"> </span>to<span class="w"> </span>stdout
-<span class="w">            </span>
-<span class="w">            </span>@note:<span class="w"> </span>part<span class="w"> </span>of<span class="w"> </span>casual-pipe
-<span class="w">            </span>@note:<span class="w"> </span>this<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span><span class="s1">&#39;casual-pipe&#39;</span><span class="w"> </span>termination<span class="w"> </span>-<span class="w"> </span>no<span class="w"> </span>internal<span class="w"> </span>representation<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>sent<span class="w"> </span>downstream
+<span class="go">      --field-from-human [0..1]  (json, yaml, xml, ini) [0..1]</span>
+<span class="go">           transform human readable fielded buffer to actual buffers</span>
+<span class="go">           </span>
+<span class="go">           reads from stdin and assumes a human readable structure in the supplied format</span>
+<span class="go">           for a casual-fielded-buffer, and transform this to an actual casual-fielded-buffer,</span>
+<span class="go">           and forward this to stdout for other downstream in the pipeline to consume</span>
+<span class="go">           </span>
+<span class="go">           @note: part of casual-pipe</span>
 
-<span class="w">      </span>--compose<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>X_OCTET/,<span class="w"> </span>.binary/,<span class="w"> </span>.yaml/,<span class="w"> </span>.xml/,<span class="w"> </span>.json/,<span class="w"> </span>.ini/<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>reads<span class="w"> </span><span class="s1">&#39;binary&#39;</span><span class="w"> </span>data<span class="w"> </span>from<span class="w"> </span>stdin<span class="w"> </span>and<span class="w"> </span>compose<span class="w"> </span>one<span class="w"> </span>actual<span class="w"> </span>buffer
-<span class="w">            </span>
-<span class="w">            </span>with<span class="w"> </span>the<span class="w"> </span>supplied<span class="w"> </span>type,<span class="w"> </span>and<span class="w"> </span>forward<span class="w"> </span>this<span class="w"> </span>to<span class="w"> </span>stdout<span class="w"> </span><span class="k">for</span><span class="w"> </span>other<span class="w"> </span>downstream<span class="w"> </span><span class="s1">&#39;components&#39;</span>
-<span class="w">            </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>pipeline<span class="w"> </span>to<span class="w"> </span>consume
-<span class="w">            </span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span>no<span class="w"> </span><span class="s1">&#39;type&#39;</span><span class="w"> </span>is<span class="w"> </span>provided,<span class="w"> </span><span class="sb">`</span>X_OCTET/<span class="sb">`</span><span class="w"> </span>is<span class="w"> </span>used
-<span class="w">            </span>
-<span class="w">            </span>@note:<span class="w"> </span>part<span class="w"> </span>of<span class="w"> </span>casual-pipe
+<span class="go">      --field-to-human [0..1]  (json, yaml, xml, ini) [0..1]</span>
+<span class="go">           reads from stdin and assumes a casual-fielded-buffer</span>
+<span class="go">           </span>
+<span class="go">           and transform this to a human readable structure in the supplied format,</span>
+<span class="go">           and prints this to stdout</span>
+<span class="go">           </span>
+<span class="go">           @note: part of casual-pipe</span>
+<span class="go">           @note: this is a &#39;casual-pipe&#39; termination - no internal representation will be sent downstream</span>
 
-<span class="w">      </span>--duplicate<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>&lt;value&gt;<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">1</span><span class="o">]</span>
-<span class="w">            </span>duplicates<span class="w"> </span>buffers<span class="w"> </span><span class="nb">read</span><span class="w"> </span>from<span class="w"> </span>stdin<span class="w"> </span>and<span class="w"> </span>send<span class="w"> </span>them<span class="w"> </span>downstream<span class="w"> </span>via<span class="w"> </span>stdout
-<span class="w">            </span>
-<span class="w">            </span><span class="sb">`</span>count<span class="sb">`</span><span class="w"> </span>amount<span class="w"> </span>of<span class="w"> </span>times.
-<span class="w">            </span>
-<span class="w">            </span>@note:<span class="w"> </span>part<span class="w"> </span>of<span class="w"> </span>casual-pipe
+<span class="go">      --compose [0..1]  (X_OCTET/, .binary/, .yaml/, .xml/, .json/, .ini/) [0..1]</span>
+<span class="go">           reads &#39;binary&#39; data from stdin and compose one actual buffer</span>
+<span class="go">           </span>
+<span class="go">           with the supplied type, and forward this to stdout for other downstream &#39;components&#39;</span>
+<span class="go">           in the pipeline to consume</span>
+<span class="go">           </span>
+<span class="go">           if no &#39;type&#39; is provided, `X_OCTET/` is used</span>
+<span class="go">           </span>
+<span class="go">           @note: part of casual-pipe</span>
 
-<span class="w">      </span>--extract<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span><span class="nb">read</span><span class="w"> </span>the<span class="w"> </span>buffers<span class="w"> </span>from<span class="w"> </span>stdin<span class="w"> </span>and<span class="w"> </span>extract<span class="w"> </span>the<span class="w"> </span>payload<span class="w"> </span>and<span class="w"> </span>sends<span class="w"> </span>it<span class="w"> </span>to<span class="w"> </span>stdout
-<span class="w">            </span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span>--verbose<span class="w"> </span>is<span class="w"> </span>provided<span class="w"> </span>the<span class="w"> </span><span class="nb">type</span><span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>buffer<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>sent<span class="w"> </span>to<span class="w"> </span>stderr.
-<span class="w">            </span>
-<span class="w">            </span>@note:<span class="w"> </span>part<span class="w"> </span>of<span class="w"> </span>casual-pipe
-<span class="w">            </span>@note:<span class="w"> </span>this<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span><span class="s1">&#39;casual-pipe&#39;</span><span class="w"> </span>termination<span class="w"> </span>-<span class="w"> </span>no<span class="w"> </span>internal<span class="w"> </span>representation<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>sent<span class="w"> </span>downstream
+<span class="go">      --duplicate [0..1]  (&lt;value&gt;) [1]</span>
+<span class="go">           duplicates buffers read from stdin and send them downstream via stdout</span>
+<span class="go">           </span>
+<span class="go">           `count` amount of times.</span>
+<span class="go">           </span>
+<span class="go">           @note: part of casual-pipe</span>
+
+<span class="go">      --extract [0..1]</span>
+<span class="go">           read the buffers from stdin and extract the payload and sends it to stdout</span>
+<span class="go">           </span>
+<span class="go">           if --verbose is provided the type of the buffer will be sent to stderr.</span>
+<span class="go">           </span>
+<span class="go">           @note: part of casual-pipe</span>
+<span class="go">           @note: this is a &#39;casual-pipe&#39; termination - no internal representation will be sent downstream</span>
 </pre></div>
 </div>
 </section>
@@ -200,7 +209,7 @@
     <dl>
       <dt>Branches</dt>
       <dd><a href="buffer.operation.html">feature/1.7/main</a></dd>
-      <dd><a href="../../../../../../../patch/1.6/main/middleware/administration/documentation/cli/buffer.operation.html">patch/1.6/main</a></dd>
+      <dd><a href="../../../../../release-notes/middleware/administration/documentation/cli/buffer.operation.html">feature/1.7/release-notes</a></dd>
       <dd><a href="../../../../../../../release/1.6/middleware/administration/documentation/cli/buffer.operation.html">release/1.6</a></dd>
     </dl>
   </div>

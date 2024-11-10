@@ -20,7 +20,7 @@
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
     <link rel="next" title="casual discovery" href="discovery.operation.html" />
-    <link rel="prev" title="casual call" href="call.operation.html" /> 
+    <link rel="prev" title="casual configuration" href="configuration.operation.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -45,7 +45,13 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">introduction</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../README.html">summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html">Get started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#documentation">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#contributing">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#release-notes">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#build-status">Build status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#downloads">Downloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#license">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../documentation/components.html">components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../documentation/user-particles.html">user particles</a></li>
 </ul>
@@ -57,6 +63,7 @@
 <li class="toctree-l3"><a class="reference internal" href="casual.operation.html">casual</a></li>
 <li class="toctree-l3"><a class="reference internal" href="buffer.operation.html">casual buffer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="call.operation.html">casual call</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.operation.html">casual configuration</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">casual describe</a></li>
 <li class="toctree-l3"><a class="reference internal" href="discovery.operation.html">casual discovery</a></li>
 <li class="toctree-l3"><a class="reference internal" href="domain.operation.html">casual domain</a></li>
@@ -71,6 +78,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.gateway.operation.html">configuration gateway</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.general.operation.html">configuration domain (general)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.queue.operation.html">configuration queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.queue.operation.html#head">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.transaction.operation.html">configuration transaction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/system.operation.html">configuration system</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../buffer/documentation/field.operation.html">field operation</a></li>
@@ -113,15 +121,15 @@
              
   <section id="casual-describe">
 <h1>casual describe<a class="headerlink" href="#casual-describe" title="Permalink to this heading">¶</a></h1>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>host#<span class="w"> </span>casual<span class="w"> </span>--help<span class="w"> </span>describe
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">host# casual --help describe</span>
 
-<span class="w">  </span>describe<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>&lt;service&gt;<span class="w"> </span><span class="o">[</span>json,<span class="w"> </span>yaml,<span class="w"> </span>xml,<span class="w"> </span>ini<span class="o">])</span><span class="w"> </span><span class="o">[</span><span class="m">1</span>..2<span class="o">]</span>
-<span class="w">        </span>service<span class="w"> </span>describer
-<span class="w">        </span>
-<span class="w">           </span>*<span class="w"> </span>service<span class="w">   </span>name<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>service<span class="w"> </span>to<span class="w"> </span>to<span class="w"> </span>describe
-<span class="w">           </span>*<span class="w"> </span><span class="o">[</span>format<span class="o">]</span><span class="w">  </span>optional<span class="w"> </span>format<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>output,<span class="w"> </span><span class="k">if</span><span class="w"> </span>absent<span class="w"> </span>a<span class="w"> </span>_CLI<span class="w"> </span>format_<span class="w"> </span>is<span class="w"> </span>used.
-<span class="w">        </span>
-<span class="w">           </span>attention:<span class="w"> </span>the<span class="w"> </span>service<span class="w"> </span>need<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>a<span class="w"> </span>casual<span class="w"> </span>aware<span class="w"> </span>service
+<span class="go">describe [0..1]  (&lt;service&gt; [json, yaml, xml, ini]) [1..2]</span>
+<span class="go">     service describer</span>
+<span class="go">     </span>
+<span class="go">        * service   name of the service to to describe</span>
+<span class="go">        * [format]  optional format of the output, if absent a _CLI format_ is used.</span>
+<span class="go">     </span>
+<span class="go">        attention: the service need to be a casual aware service</span>
 </pre></div>
 </div>
 </section>
@@ -130,7 +138,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="call.operation.html" class="btn btn-neutral float-left" title="casual call" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="configuration.operation.html" class="btn btn-neutral float-left" title="casual configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="discovery.operation.html" class="btn btn-neutral float-right" title="casual discovery" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
@@ -161,7 +169,7 @@
     <dl>
       <dt>Branches</dt>
       <dd><a href="describe.operation.html">feature/1.7/main</a></dd>
-      <dd><a href="../../../../../../../patch/1.6/main/middleware/administration/documentation/cli/describe.operation.html">patch/1.6/main</a></dd>
+      <dd><a href="../../../../../release-notes/middleware/administration/documentation/cli/describe.operation.html">feature/1.7/release-notes</a></dd>
       <dd><a href="../../../../../../../release/1.6/middleware/administration/documentation/cli/describe.operation.html">release/1.6</a></dd>
     </dl>
   </div>

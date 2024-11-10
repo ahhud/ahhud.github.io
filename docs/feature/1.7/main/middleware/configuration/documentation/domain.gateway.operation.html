@@ -45,7 +45,13 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">introduction</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../README.html">summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html">Get started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html#documentation">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html#contributing">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html#release-notes">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html#build-status">Build status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html#downloads">Downloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html#license">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../documentation/components.html">components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../documentation/user-particles.html">user particles</a></li>
 </ul>
@@ -57,6 +63,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">configuration gateway</a></li>
 <li class="toctree-l2"><a class="reference internal" href="domain.general.operation.html">configuration domain (general)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="domain.queue.operation.html">configuration queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domain.queue.operation.html#head">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="domain.transaction.operation.html">configuration transaction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="system.operation.html">configuration system</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../buffer/documentation/field.operation.html">field operation</a></li>
@@ -280,259 +287,12 @@ of <em>resources</em> involved within the prepare and commit/rollback stage.</p>
 </section>
 <section id="examples">
 <h2>examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
-<p>Below follows examples in <code class="docutils literal notranslate"><span class="pre">yaml</span></code> and <code class="docutils literal notranslate"><span class="pre">json</span></code> <em>(casual can also handle <code class="docutils literal notranslate"><span class="pre">ini</span></code> and <code class="docutils literal notranslate"><span class="pre">xml</span></code>)</em></p>
-<section id="yaml">
-<h3>yaml<a class="headerlink" href="#yaml" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
-<span class="nt">domain</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">gateway</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">inbound</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">default</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">note</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;discovery</span><span class="nv"> </span><span class="s">forward</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">disabled</span><span class="nv"> </span><span class="s">default.&quot;</span>
-<span class="w">        </span><span class="nt">connection</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">discovery</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">forward</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">      </span><span class="nt">groups</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;in-A&quot;</span>
-<span class="w">          </span><span class="nt">note</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;if</span><span class="nv"> </span><span class="s">threshold</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">2MB</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">total</span><span class="nv"> </span><span class="s">payload</span><span class="nv"> </span><span class="s">&#39;in</span><span class="nv"> </span><span class="s">flight&#39;</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">reach</span><span class="nv"> </span><span class="s">inbound</span><span class="nv"> </span><span class="s">will</span><span class="nv"> </span><span class="s">stop</span><span class="nv"> </span><span class="s">consume</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">socket</span><span class="nv"> </span><span class="s">until</span><span class="nv"> </span><span class="s">we&#39;re</span><span class="nv"> </span><span class="s">below&quot;</span>
-<span class="w">          </span><span class="nt">limit</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2097152</span>
-<span class="w">          </span><span class="nt">connections</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;localhost:7778&quot;</span>
-<span class="w">              </span><span class="nt">note</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;can</span><span class="nv"> </span><span class="s">be</span><span class="nv"> </span><span class="s">several</span><span class="nv"> </span><span class="s">listening</span><span class="nv"> </span><span class="s">host:port</span><span class="nv"> </span><span class="s">per</span><span class="nv"> </span><span class="s">inbound</span><span class="nv"> </span><span class="s">instance&quot;</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;some.host.org:7779&quot;</span>
-<span class="w">              </span><span class="nt">discovery</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">forward</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">              </span><span class="nt">note</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;discovery</span><span class="nv"> </span><span class="s">will</span><span class="nv"> </span><span class="s">be</span><span class="nv"> </span><span class="s">forward</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">&#39;all&#39;</span><span class="nv"> </span><span class="s">outbounds&quot;</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;in-B&quot;</span>
-<span class="w">          </span><span class="nt">note</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;threshold</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">either</span><span class="nv"> </span><span class="s">10</span><span class="nv"> </span><span class="s">messages</span><span class="nv"> </span><span class="s">OR</span><span class="nv"> </span><span class="s">10MB</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">first</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">reach,</span><span class="nv"> </span><span class="s">inbound</span><span class="nv"> </span><span class="s">will</span><span class="nv"> </span><span class="s">stop</span><span class="nv"> </span><span class="s">consume&quot;</span>
-<span class="w">          </span><span class="nt">limit</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10485760</span>
-<span class="w">            </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
-<span class="w">          </span><span class="nt">connections</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;some.host.org:7780&quot;</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;some.host.org:4242&quot;</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">note</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;(generated</span><span class="nv"> </span><span class="s">alias)</span><span class="nv"> </span><span class="s">listeners</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">no</span><span class="nv"> </span><span class="s">limits&quot;</span>
-<span class="w">          </span><span class="nt">connections</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;some.host.org:4242&quot;</span>
-<span class="w">    </span><span class="nt">outbound</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">groups</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;out-A&quot;</span>
-<span class="w">          </span><span class="nt">note</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;casual</span><span class="nv"> </span><span class="s">will</span><span class="nv"> </span><span class="s">&#39;round-robin&#39;</span><span class="nv"> </span><span class="s">between</span><span class="nv"> </span><span class="s">connections</span><span class="nv"> </span><span class="s">within</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">group</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">same</span><span class="nv"> </span><span class="s">service/queue&quot;</span>
-<span class="w">          </span><span class="nt">order</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">          </span><span class="nt">connections</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;a45.domain.host.org:7779&quot;</span>
-<span class="w">              </span><span class="nt">note</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;connection</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">domain</span><span class="nv"> </span><span class="s">&#39;a45&#39;</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">we</span><span class="nv"> </span><span class="s">expect</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">find</span><span class="nv"> </span><span class="s">service</span><span class="nv"> </span><span class="s">&#39;s1&#39;</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">&#39;s2&#39;</span><span class="nv"> </span><span class="s">there.&quot;</span>
-<span class="w">              </span><span class="nt">services</span><span class="p">:</span>
-<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;s1&quot;</span>
-<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;s2&quot;</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;a46.domain.host.org:7779&quot;</span>
-<span class="w">              </span><span class="nt">note</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;we</span><span class="nv"> </span><span class="s">expect</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">find</span><span class="nv"> </span><span class="s">queues</span><span class="nv"> </span><span class="s">&#39;q1&#39;</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">&#39;q2&#39;</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">service</span><span class="nv"> </span><span class="s">&#39;s1&#39;&quot;</span>
-<span class="w">              </span><span class="nt">services</span><span class="p">:</span>
-<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;s1&quot;</span>
-<span class="w">              </span><span class="nt">queues</span><span class="p">:</span>
-<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;q1&quot;</span>
-<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;q2&quot;</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;out-B&quot;</span>
-<span class="w">          </span><span class="nt">note</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;has</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">same</span><span class="nv"> </span><span class="s">order</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">out-A</span><span class="nv"> </span><span class="s">group</span><span class="nv"> </span><span class="s">-&gt;</span><span class="nv"> </span><span class="s">services</span><span class="nv"> </span><span class="s">found</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">out-A</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">out-B</span><span class="nv"> </span><span class="s">will</span><span class="nv"> </span><span class="s">be</span><span class="nv"> </span><span class="s">load</span><span class="nv"> </span><span class="s">balanced.&quot;</span>
-<span class="w">          </span><span class="nt">order</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">          </span><span class="nt">connections</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;a47.domain.host.org:7779&quot;</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;fallback&quot;</span>
-<span class="w">          </span><span class="nt">order</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
-<span class="w">          </span><span class="nt">connections</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;a99.domain.host.org:7780&quot;</span>
-<span class="w">              </span><span class="nt">note</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;will</span><span class="nv"> </span><span class="s">be</span><span class="nv"> </span><span class="s">chosen</span><span class="nv"> </span><span class="s">if</span><span class="nv"> </span><span class="s">_resources_</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">not</span><span class="nv"> </span><span class="s">found</span><span class="nv"> </span><span class="s">at</span><span class="nv"> </span><span class="s">connections</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">out-A</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">out-B</span><span class="nv"> </span><span class="s">group&quot;</span>
-<span class="w">    </span><span class="nt">reverse</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">inbound</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">groups</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;in-C&quot;</span>
-<span class="w">            </span><span class="nt">note</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;connect</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">other</span><span class="nv"> </span><span class="s">reverse</span><span class="nv"> </span><span class="s">outbound</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">listening</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">this</span><span class="nv"> </span><span class="s">port</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">then</span><span class="nv"> </span><span class="s">treat</span><span class="nv"> </span><span class="s">it</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">regular</span><span class="nv"> </span><span class="s">inbound&quot;</span>
-<span class="w">            </span><span class="nt">limit</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">42</span>
-<span class="w">            </span><span class="nt">connections</span><span class="p">:</span>
-<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;localhost:7780&quot;</span>
-<span class="w">                </span><span class="nt">note</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;one</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">possible</span><span class="nv"> </span><span class="s">many</span><span class="nv"> </span><span class="s">addresses</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">connect</span><span class="nv"> </span><span class="s">to&quot;</span>
-<span class="w">      </span><span class="nt">outbound</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">groups</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;out-C&quot;</span>
-<span class="w">            </span><span class="nt">note</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;listen</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">connection</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">reverse</span><span class="nv"> </span><span class="s">inbound</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">then</span><span class="nv"> </span><span class="s">treat</span><span class="nv"> </span><span class="s">it</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">regular</span><span class="nv"> </span><span class="s">outbound&quot;</span>
-<span class="w">            </span><span class="nt">order</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">            </span><span class="nt">connections</span><span class="p">:</span>
-<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;localhost:7780&quot;</span>
-<span class="w">                </span><span class="nt">note</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;one</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">possible</span><span class="nv"> </span><span class="s">many</span><span class="nv"> </span><span class="s">listening</span><span class="nv"> </span><span class="s">addresses.&quot;</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;out-D&quot;</span>
-<span class="w">            </span><span class="nt">note</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;another</span><span class="nv"> </span><span class="s">instance</span><span class="nv"> </span><span class="s">(process)</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">handles</span><span class="nv"> </span><span class="s">(multiplexed)</span><span class="nv"> </span><span class="s">traffic</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">it&#39;s</span><span class="nv"> </span><span class="s">own&quot;</span>
-<span class="w">            </span><span class="nt">order</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
-<span class="w">            </span><span class="nt">connections</span><span class="p">:</span>
-<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;localhost:7781&quot;</span>
-<span class="w">                </span><span class="nt">note</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;one</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">possible</span><span class="nv"> </span><span class="s">many</span><span class="nv"> </span><span class="s">listening</span><span class="nv"> </span><span class="s">addresses.&quot;</span>
-<span class="nn">...</span>
-</pre></div>
-</div>
-</section>
-<section id="json">
-<h3>json<a class="headerlink" href="#json" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;domain&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;gateway&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;inbound&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;default&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;discovery forward is disabled default.&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;connection&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">&quot;discovery&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">&quot;forward&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
-<span class="w">                        </span><span class="p">}</span>
-<span class="w">                    </span><span class="p">}</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="nt">&quot;groups&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">&quot;alias&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;in-A&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;if threshold of 2MB of total payload &#39;in flight&#39; is reach inbound will stop consume from socket until we&#39;re below&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2097152</span>
-<span class="w">                        </span><span class="p">},</span>
-<span class="w">                        </span><span class="nt">&quot;connections&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                            </span><span class="p">{</span>
-<span class="w">                                </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;localhost:7778&quot;</span><span class="p">,</span>
-<span class="w">                                </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;can be several listening host:port per inbound instance&quot;</span>
-<span class="w">                            </span><span class="p">},</span>
-<span class="w">                            </span><span class="p">{</span>
-<span class="w">                                </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;some.host.org:7779&quot;</span><span class="p">,</span>
-<span class="w">                                </span><span class="nt">&quot;discovery&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                    </span><span class="nt">&quot;forward&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-<span class="w">                                </span><span class="p">},</span>
-<span class="w">                                </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;discovery will be forward to &#39;all&#39; outbounds&quot;</span>
-<span class="w">                            </span><span class="p">}</span>
-<span class="w">                        </span><span class="p">]</span>
-<span class="w">                    </span><span class="p">},</span>
-<span class="w">                    </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">&quot;alias&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;in-B&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;threshold of either 10 messages OR 10MB - the first that is reach, inbound will stop consume&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10485760</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;messages&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span>
-<span class="w">                        </span><span class="p">},</span>
-<span class="w">                        </span><span class="nt">&quot;connections&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                            </span><span class="p">{</span>
-<span class="w">                                </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;some.host.org:7780&quot;</span>
-<span class="w">                            </span><span class="p">},</span>
-<span class="w">                            </span><span class="p">{</span>
-<span class="w">                                </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;some.host.org:4242&quot;</span>
-<span class="w">                            </span><span class="p">}</span>
-<span class="w">                        </span><span class="p">]</span>
-<span class="w">                    </span><span class="p">},</span>
-<span class="w">                    </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;(generated alias) listeners - no limits&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;connections&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                            </span><span class="p">{</span>
-<span class="w">                                </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;some.host.org:4242&quot;</span>
-<span class="w">                            </span><span class="p">}</span>
-<span class="w">                        </span><span class="p">]</span>
-<span class="w">                    </span><span class="p">}</span>
-<span class="w">                </span><span class="p">]</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="nt">&quot;outbound&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;groups&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">&quot;alias&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;out-A&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;casual will &#39;round-robin&#39; between connections within a group for the same service/queue&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;connections&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                            </span><span class="p">{</span>
-<span class="w">                                </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a45.domain.host.org:7779&quot;</span><span class="p">,</span>
-<span class="w">                                </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;connection to domain &#39;a45&#39; - we expect to find service &#39;s1&#39; and &#39;s2&#39; there.&quot;</span><span class="p">,</span>
-<span class="w">                                </span><span class="nt">&quot;services&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                                    </span><span class="s2">&quot;s1&quot;</span><span class="p">,</span>
-<span class="w">                                    </span><span class="s2">&quot;s2&quot;</span>
-<span class="w">                                </span><span class="p">]</span>
-<span class="w">                            </span><span class="p">},</span>
-<span class="w">                            </span><span class="p">{</span>
-<span class="w">                                </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a46.domain.host.org:7779&quot;</span><span class="p">,</span>
-<span class="w">                                </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;we expect to find queues &#39;q1&#39; and &#39;q2&#39; and service &#39;s1&#39;&quot;</span><span class="p">,</span>
-<span class="w">                                </span><span class="nt">&quot;services&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                                    </span><span class="s2">&quot;s1&quot;</span>
-<span class="w">                                </span><span class="p">],</span>
-<span class="w">                                </span><span class="nt">&quot;queues&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                                    </span><span class="s2">&quot;q1&quot;</span><span class="p">,</span>
-<span class="w">                                    </span><span class="s2">&quot;q2&quot;</span>
-<span class="w">                                </span><span class="p">]</span>
-<span class="w">                            </span><span class="p">}</span>
-<span class="w">                        </span><span class="p">]</span>
-<span class="w">                    </span><span class="p">},</span>
-<span class="w">                    </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">&quot;alias&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;out-B&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;has the same order as out-A group -&gt; services found in out-A and out-B will be load balanced.&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;connections&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                            </span><span class="p">{</span>
-<span class="w">                                </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a47.domain.host.org:7779&quot;</span>
-<span class="w">                            </span><span class="p">}</span>
-<span class="w">                        </span><span class="p">]</span>
-<span class="w">                    </span><span class="p">},</span>
-<span class="w">                    </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">&quot;alias&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fallback&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;connections&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                            </span><span class="p">{</span>
-<span class="w">                                </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a99.domain.host.org:7780&quot;</span><span class="p">,</span>
-<span class="w">                                </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;will be chosen if _resources_ are not found at connections in the out-A or out-B group&quot;</span>
-<span class="w">                            </span><span class="p">}</span>
-<span class="w">                        </span><span class="p">]</span>
-<span class="w">                    </span><span class="p">}</span>
-<span class="w">                </span><span class="p">]</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="nt">&quot;reverse&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;inbound&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;groups&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                        </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">&quot;alias&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;in-C&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;connect to other reverse outbound that is listening on this port - then treat it as a regular inbound&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                </span><span class="nt">&quot;messages&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span>
-<span class="w">                            </span><span class="p">},</span>
-<span class="w">                            </span><span class="nt">&quot;connections&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                                </span><span class="p">{</span>
-<span class="w">                                    </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;localhost:7780&quot;</span><span class="p">,</span>
-<span class="w">                                    </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;one of possible many addresses to connect to&quot;</span>
-<span class="w">                                </span><span class="p">}</span>
-<span class="w">                            </span><span class="p">]</span>
-<span class="w">                        </span><span class="p">}</span>
-<span class="w">                    </span><span class="p">]</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="nt">&quot;outbound&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;groups&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                        </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">&quot;alias&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;out-C&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;listen for connection from reverse inbound - then treat it as a regular outbound&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;connections&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                                </span><span class="p">{</span>
-<span class="w">                                    </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;localhost:7780&quot;</span><span class="p">,</span>
-<span class="w">                                    </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;one of possible many listening addresses.&quot;</span>
-<span class="w">                                </span><span class="p">}</span>
-<span class="w">                            </span><span class="p">]</span>
-<span class="w">                        </span><span class="p">},</span>
-<span class="w">                        </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">&quot;alias&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;out-D&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;another instance (process) that handles (multiplexed) traffic on it&#39;s own&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;connections&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                                </span><span class="p">{</span>
-<span class="w">                                    </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;localhost:7781&quot;</span><span class="p">,</span>
-<span class="w">                                    </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;one of possible many listening addresses.&quot;</span>
-<span class="w">                                </span><span class="p">}</span>
-<span class="w">                            </span><span class="p">]</span>
-<span class="w">                        </span><span class="p">}</span>
-<span class="w">                    </span><span class="p">]</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</section>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../../../_downloads/8ab5847a52d592cfddc0c4e1fa5683d9/gateway.yaml"><span class="xref download myst">domain/gateway.yaml</span></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../../_downloads/516d600543be49caaf6f1f16b1c8f833/gateway.json"><span class="xref download myst">domain/gateway.json</span></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../../_downloads/4d69b62712ee8a81f8f0f92a306ed360/gateway.xml"><span class="xref download myst">domain/gateway.xml</span></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../../_downloads/41fe4b8f1e40c4c6b89ec34a19517735/gateway.ini"><span class="xref download myst">domain/gateway.ini</span></a></p></li>
+</ul>
 </section>
 </section>
 
@@ -571,7 +331,7 @@ of <em>resources</em> involved within the prepare and commit/rollback stage.</p>
     <dl>
       <dt>Branches</dt>
       <dd><a href="domain.gateway.operation.html">feature/1.7/main</a></dd>
-      <dd><a href="../../../../../../patch/1.6/main/middleware/configuration/documentation/domain.gateway.operation.html">patch/1.6/main</a></dd>
+      <dd><a href="../../../../release-notes/middleware/configuration/documentation/domain.gateway.operation.html">feature/1.7/release-notes</a></dd>
       <dd><a href="../../../../../../release/1.6/middleware/configuration/documentation/domain.gateway.operation.html">release/1.6</a></dd>
     </dl>
   </div>

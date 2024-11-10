@@ -45,7 +45,13 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">introduction</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../README.html">summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html">Get started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html#documentation">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html#contributing">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html#release-notes">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html#build-status">Build status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html#downloads">Downloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html#license">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../documentation/components.html">components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../documentation/user-particles.html">user particles</a></li>
 </ul>
@@ -57,6 +63,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../configuration/documentation/domain.gateway.operation.html">configuration gateway</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../configuration/documentation/domain.general.operation.html">configuration domain (general)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../configuration/documentation/domain.queue.operation.html">configuration queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../configuration/documentation/domain.queue.operation.html#head">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../configuration/documentation/domain.transaction.operation.html">configuration transaction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../configuration/documentation/system.operation.html">configuration system</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../buffer/documentation/field.operation.html">field operation</a></li>
@@ -99,104 +106,55 @@
   <section id="casual-queue">
 <h1>casual-queue<a class="headerlink" href="#casual-queue" title="Permalink to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">casual-queue</span></code> is a simple and lightweight <em>queue manager</em>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">casual-queue</span></code> differs from other <em>xa-resources</em> in the form that <code class="docutils literal notranslate"><span class="pre">casual-queue</span></code> is ‘known’ to <code class="docutils literal notranslate"><span class="pre">casual</span></code>,
-hence <code class="docutils literal notranslate"><span class="pre">casual</span></code> can, and does, take shortcuts regarding transaction semantics. User code does not have
-to bind/link to <code class="docutils literal notranslate"><span class="pre">casual-queue</span></code> as a <em>xa-resource</em>, it works more like <em>service calls</em></p>
+<p><code class="docutils literal notranslate"><span class="pre">casual-queue</span></code> differs from other <em>xa-resources</em> in the form that <code class="docutils literal notranslate"><span class="pre">casual-queue</span></code>
+is ‘known’ to <code class="docutils literal notranslate"><span class="pre">casual</span></code>, hence <code class="docutils literal notranslate"><span class="pre">casual</span></code> can, and does, take shortcuts regarding
+transaction semantics. User code does not have to bind/link to <code class="docutils literal notranslate"><span class="pre">casual-queue</span></code> as
+a <em>xa-resource</em>, it works more like <em>service calls</em></p>
 <section id="groups">
 <h2>groups<a class="headerlink" href="#groups" title="Permalink to this heading">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">casual-queue</span></code> groups <em>queues</em> into <em>groups</em>, both logically and physically. This enables possibilities to
-have different storage for different <em>groups</em> (and their <em>queues</em>).</p>
+<p><code class="docutils literal notranslate"><span class="pre">casual-queue</span></code> groups <em>queues</em> into <em>groups</em>, both logically and physically.
+This enables possibilities to have different storage for different <em>groups</em> (and
+their <em>queues</em>).</p>
 <p><em>group names</em> can be anything as long as they’re unique within the <code class="docutils literal notranslate"><span class="pre">domain</span></code>.</p>
 <section id="queuebase">
 <h3>queuebase<a class="headerlink" href="#queuebase" title="Permalink to this heading">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">casual-queue</span></code> stores the <em>group</em> in a <em>queuebase</em> file (a sqlite database file) at the configured path.
-You can specify where the <em>group</em> will be stored, via <code class="docutils literal notranslate"><span class="pre">domain/queue/group/queuebase:</span> <span class="pre">/some/fast/disk/group-a.qb</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">casual-queue</span></code> stores the <em>group</em> in a <em>queuebase</em> file (a sqlite database file)
+at the configured path. You can specify where the <em>group</em> will be stored, via
+<code class="docutils literal notranslate"><span class="pre">domain/queue/group/queuebase:</span> <span class="pre">/some/fast/disk/group-a.qb</span></code>.</p>
 <p>Default <em>queuebase file</em> for a <em>group</em> is <code class="docutils literal notranslate"><span class="pre">$CASUAL_DOMAIN_HOME/queue/&lt;group-name&gt;.qb</span></code></p>
 </section>
 <section id="in-memory">
 <h3>in-memory<a class="headerlink" href="#in-memory" title="Permalink to this heading">¶</a></h3>
-<p><em>groups</em> can be configured to have a <em>non persistance in memory storage</em>, this is done with the magical name <code class="docutils literal notranslate"><span class="pre">:memory:</span></code>
-(this is how <code class="docutils literal notranslate"><span class="pre">sqlite</span></code> works, so this is more a consequence of the choice to use <code class="docutils literal notranslate"><span class="pre">sqlite</span></code> as <em>storage manager</em>).</p>
+<p><em>groups</em> can be configured to have a <em>non persistance in memory storage</em>, this
+is done with the magical name <code class="docutils literal notranslate"><span class="pre">:memory:</span></code> (this is how <code class="docutils literal notranslate"><span class="pre">sqlite</span></code> works, so this is
+more a consequence of the choice to use <code class="docutils literal notranslate"><span class="pre">sqlite</span></code> as <em>storage manager</em>).</p>
 </section>
 </section>
 <section id="queues">
 <h2>queues<a class="headerlink" href="#queues" title="Permalink to this heading">¶</a></h2>
-<p>Every <em>queue</em> gets a corresponding <em>error-queue</em>, which takes the name: <code class="docutils literal notranslate"><span class="pre">&lt;queue-name&gt;.error</span></code></p>
-<p><em>queues</em> can be named to anything as long as they’re unique within the <code class="docutils literal notranslate"><span class="pre">domain</span></code>, this includes the generated error queues.
-Hence, it’s not possible to create <code class="docutils literal notranslate"><span class="pre">foo</span></code> <em>and</em> <code class="docutils literal notranslate"><span class="pre">foo.error</span></code>, since the latter will collide with the generated.</p>
+<p>Every <em>queue</em> gets a corresponding <em>error-queue</em>, which takes the name:
+<code class="docutils literal notranslate"><span class="pre">&lt;queue-name&gt;.error</span></code></p>
+<p><em>queues</em> can be named to anything as long as they’re unique within the <code class="docutils literal notranslate"><span class="pre">domain</span></code>,
+this includes the generated error queues. Hence, it’s not possible to create
+<code class="docutils literal notranslate"><span class="pre">foo</span></code> <em>and</em> <code class="docutils literal notranslate"><span class="pre">foo.error</span></code>, since the latter will collide with the generated.</p>
 <p><em>queues</em> can be configured to have <code class="docutils literal notranslate"><span class="pre">retry.count</span></code> and <code class="docutils literal notranslate"><span class="pre">retry.delay</span></code>:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">retry.count</span></code>: how many times a message can be dequeued and rolledback before the message is moved to the <em>error queue</em></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">retry.delay</span></code>: how long time should the message be <em>not available</em> after a dequeue and rollback.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">retry.count</span></code>: how many times a message can be dequeued and rolledback before
+the message is moved to the <em>error queue</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">retry.delay</span></code>: how long time should the message be <em>not available</em> after a
+dequeue and rollback.</p></li>
 </ul>
-<p><em>error-queues</em> can be accessed exactly like any other <em>queue</em>. The only difference is that <code class="docutils literal notranslate"><span class="pre">retry</span></code>
-will always be <code class="docutils literal notranslate"><span class="pre">retry.count</span> <span class="pre">=</span> <span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">retry.delay</span> <span class="pre">=</span> <span class="pre">0s</span></code>, or rather, the <code class="docutils literal notranslate"><span class="pre">retry</span></code> will not be taken into account for <em>error-queues</em>.</p>
-<p>The only way to remove messages from an <em>error-queue</em> is to consume the messages (dequeue [successful commit]), if a rollback
-takes place the message will remain on the <em>error-queue</em>.</p>
-<section id="clear">
-<h3>clear<a class="headerlink" href="#clear" title="Permalink to this heading">¶</a></h3>
-<p>To clear a queue, that is, remove and discard messages, use</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>casual<span class="w"> </span>queue<span class="w"> </span>--consume<span class="w"> </span>&lt;some-queue&gt;<span class="w"> </span>&gt;<span class="w"> </span>/dev/null
-</pre></div>
-</div>
-</section>
+<p><em>error-queues</em> can be accessed exactly like any other <em>queue</em>. The only
+difference is that <code class="docutils literal notranslate"><span class="pre">retry</span></code> will always be <code class="docutils literal notranslate"><span class="pre">retry.count</span> <span class="pre">=</span> <span class="pre">0</span></code> and
+<code class="docutils literal notranslate"><span class="pre">retry.delay</span> <span class="pre">=</span> <span class="pre">0s</span></code>, or rather, the <code class="docutils literal notranslate"><span class="pre">retry</span></code> will not be taken into account for
+<em>error-queues</em>.</p>
+<p>The only way to remove messages from an <em>error-queue</em> is to consume the messages
+(dequeue [successful commit]), if a rollback takes place the message will remain
+on the <em>error-queue</em>.</p>
 </section>
 <section id="configuration">
 <h2>configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">¶</a></h2>
-<p><strong>example</strong></p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="w"> </span>
-<span class="nt">domain</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">queue-centric-domain-example</span>
-
-<span class="w">  </span><span class="nt">queue</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">default</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">queue</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">retry</span><span class="p">:</span>
-<span class="w">          </span><span class="c1"># number of times a message can be rolled back before it will be moved to </span>
-<span class="w">          </span><span class="c1"># error queue</span>
-<span class="w">          </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span><span class="w"> </span>
-
-<span class="w">          </span><span class="c1"># duration until a rolled backed message is available for consumption (SI-units: h, min, s, ms, us, ns)</span>
-<span class="w">          </span><span class="nt">delay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20s</span>
-
-
-<span class="w">      </span><span class="nt">directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${CASUAL_DOMAIN_HOME}/queue/groups</span>
-
-<span class="w">    </span><span class="nt">groups</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">groupA</span>
-<span class="w">        </span><span class="nt">note</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;will</span><span class="nv"> </span><span class="s">get</span><span class="nv"> </span><span class="s">default</span><span class="nv"> </span><span class="s">queuebase:</span><span class="nv"> </span><span class="s">${CASUAL_DOMAIN_HOME}/queue/groupA.gb&quot;</span>
-<span class="w">        </span><span class="nt">queues</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">q_A1</span>
-
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">q_A2</span>
-<span class="w">            </span><span class="nt">retry</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
-<span class="w">              </span><span class="nt">delay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100ms</span>
-<span class="w">            </span><span class="nt">note</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">after 10 rollbacked dequeues, message is moved to q_A2.error</span>
-
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">q_A3</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">q_A4</span>
-
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">groupB</span>
-<span class="w">        </span><span class="nt">queuebase</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/some/fast/disk/queue/groupB.qb</span>
-<span class="w">        </span><span class="nt">queues</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">q_B1</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">q_B2</span>
-<span class="w">            </span><span class="nt">retry</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
-
-<span class="w">            </span><span class="nt">note</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">after 20 rollbacked dequeues, message is moved to q_B2.error. retry.delay is &#39;inherited&#39; from default, if any</span>
-
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">groupC</span>
-<span class="w">        </span><span class="nt">queuebase</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;:memory:&quot;</span>
-<span class="w">        </span><span class="nt">note</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">group is an in-memory queue, hence no persistence</span>
-<span class="w">        </span><span class="nt">queues</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">q_C1</span>
-
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">q_C2</span>
-</pre></div>
-</div>
-<p>For a more accurate configuration example (generated example), see <a class="reference internal" href="#../../configuration/example/domain/domain.yaml"><span class="xref myst">domain</span></a></p>
+<p>see <a class="reference internal" href="../../configuration/documentation/domain.queue.operation.html"><span class="std std-doc">configuration.domain.queue.operation</span></a></p>
 </section>
 </section>
 
@@ -235,7 +193,7 @@ takes place the message will remain on the <em>error-queue</em>.</p>
     <dl>
       <dt>Branches</dt>
       <dd><a href="queue.operation.html">feature/1.7/main</a></dd>
-      <dd><a href="../../../../../../patch/1.6/main/middleware/queue/documentation/queue.operation.html">patch/1.6/main</a></dd>
+      <dd><a href="../../../../release-notes/middleware/queue/documentation/queue.operation.html">feature/1.7/release-notes</a></dd>
       <dd><a href="../../../../../../release/1.6/middleware/queue/documentation/queue.operation.html">release/1.6</a></dd>
     </dl>
   </div>

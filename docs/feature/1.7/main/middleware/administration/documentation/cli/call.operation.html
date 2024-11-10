@@ -19,7 +19,7 @@
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="casual describe" href="describe.operation.html" />
+    <link rel="next" title="casual configuration" href="configuration.operation.html" />
     <link rel="prev" title="casual buffer" href="buffer.operation.html" /> 
 </head>
 
@@ -45,7 +45,13 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">introduction</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../README.html">summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html">Get started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#documentation">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#contributing">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#release-notes">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#build-status">Build status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#downloads">Downloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#license">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../documentation/components.html">components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../documentation/user-particles.html">user particles</a></li>
 </ul>
@@ -57,6 +63,7 @@
 <li class="toctree-l3"><a class="reference internal" href="casual.operation.html">casual</a></li>
 <li class="toctree-l3"><a class="reference internal" href="buffer.operation.html">casual buffer</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">casual call</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.operation.html">casual configuration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="describe.operation.html">casual describe</a></li>
 <li class="toctree-l3"><a class="reference internal" href="discovery.operation.html">casual discovery</a></li>
 <li class="toctree-l3"><a class="reference internal" href="domain.operation.html">casual domain</a></li>
@@ -71,6 +78,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.gateway.operation.html">configuration gateway</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.general.operation.html">configuration domain (general)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.queue.operation.html">configuration queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.queue.operation.html#head">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.transaction.operation.html">configuration transaction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/system.operation.html">configuration system</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../buffer/documentation/field.operation.html">field operation</a></li>
@@ -113,32 +121,33 @@
              
   <section id="casual-call">
 <h1>casual call<a class="headerlink" href="#casual-call" title="Permalink to this heading">¶</a></h1>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>host#<span class="w"> </span>casual<span class="w"> </span>--help<span class="w"> </span>call
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">host# casual --help call</span>
 
-<span class="w">  </span>call<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">        </span>generic<span class="w"> </span>service<span class="w"> </span>call
-<span class="w">        </span>
-<span class="w">        </span>Reads<span class="w"> </span>buffer<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>from<span class="w"> </span>stdin<span class="w"> </span>and<span class="w"> </span>call<span class="w"> </span>the<span class="w"> </span>provided<span class="w"> </span>service,<span class="w"> </span>prints<span class="w"> </span>the<span class="w"> </span>reply<span class="w"> </span>buffer<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>to<span class="w"> </span>stdout.
-<span class="w">        </span>Assumes<span class="w"> </span>that<span class="w"> </span>the<span class="w"> </span>input<span class="w"> </span>buffer<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span><span class="k">in</span><span class="w"> </span>a<span class="w"> </span>conformant<span class="w"> </span>format,<span class="w"> </span>ie,<span class="w"> </span>created<span class="w"> </span>by<span class="w"> </span>casual.
-<span class="w">        </span>Errors<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>printed<span class="w"> </span>to<span class="w"> </span>stderr
-<span class="w">        </span>
-<span class="w">        </span>@note:<span class="w"> </span>part<span class="w"> </span>of<span class="w"> </span>casual-pipe
+<span class="go">call [0..1]</span>
+<span class="go">     generic service call</span>
+<span class="go">     </span>
+<span class="go">     Reads buffer(s) from stdin and call the provided service, prints the reply buffer(s) to stdout.</span>
+<span class="go">     Assumes that the input buffer to be in a conformant format, ie, created by casual.</span>
+<span class="go">     Errors will be printed to stderr</span>
+<span class="go">     </span>
+<span class="go">     @note: part of casual-pipe</span>
 
-<span class="w">    </span>SUB<span class="w"> </span>OPTIONS
-<span class="w">      </span>-s,<span class="w"> </span>--service<span class="w"> </span><span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w">  </span><span class="o">(</span>&lt;service&gt;<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">1</span><span class="o">]</span>
-<span class="w">            </span>service<span class="w"> </span>to<span class="w"> </span>call
+<span class="go">   SUB OPTIONS:</span>
 
-<span class="w">      </span>--iterations<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>&lt;value&gt;<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">1</span><span class="o">]</span>
-<span class="w">            </span>number<span class="w"> </span>of<span class="w"> </span>iterations<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="m">1</span><span class="o">)</span><span class="w"> </span>-<span class="w"> </span>this<span class="w"> </span>could<span class="w"> </span>be<span class="w"> </span>helpful<span class="w"> </span><span class="k">for</span><span class="w"> </span>testing<span class="w"> </span>load
+<span class="go">      -s, --service [0..1]  (&lt;service&gt;) [1]</span>
+<span class="go">           service to call</span>
 
-<span class="w">      </span>--examples<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>prints<span class="w"> </span>several<span class="w"> </span>examples<span class="w"> </span>of<span class="w"> </span>how<span class="w"> </span>casual<span class="w"> </span>call<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>used
+<span class="go">      --iterations [0..1]  (&lt;value&gt;) [1]</span>
+<span class="go">           number of iterations (default: 1) - this could be helpful for testing load</span>
 
-<span class="w">      </span><span class="o">[</span>deprecated<span class="o">]</span><span class="w"> </span>--asynchronous<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>&lt;value&gt;<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">1</span><span class="o">]</span>
-<span class="w">            </span><span class="o">[</span>removed<span class="o">]</span><span class="w"> </span>use<span class="w"> </span><span class="sb">`</span>casual<span class="w"> </span>--block<span class="w"> </span>true<span class="p">|</span><span class="nb">false</span><span class="w"> </span>call<span class="w"> </span>...<span class="sb">`</span><span class="w"> </span>instead
+<span class="go">      --examples [0..1]</span>
+<span class="go">           prints several examples of how casual call can be used</span>
 
-<span class="w">      </span><span class="o">[</span>deprecated<span class="o">]</span><span class="w"> </span>--transaction<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>&lt;value&gt;<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">1</span><span class="o">]</span>
-<span class="w">            </span><span class="o">[</span>removed<span class="o">]</span><span class="w"> </span>use<span class="w"> </span><span class="sb">`</span>casual<span class="w"> </span>transaction<span class="w"> </span>--begin<span class="sb">`</span><span class="w"> </span>instead
+<span class="go">      [deprecated] --asynchronous [0..1]  (&lt;value&gt;) [1]</span>
+<span class="go">           [removed] use `casual --block true|false call ...` instead</span>
+
+<span class="go">      [deprecated] --transaction [0..1]  (&lt;value&gt;) [1]</span>
+<span class="go">           [removed] use `casual transaction --begin` instead</span>
 </pre></div>
 </div>
 </section>
@@ -148,7 +157,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="buffer.operation.html" class="btn btn-neutral float-left" title="casual buffer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="describe.operation.html" class="btn btn-neutral float-right" title="casual describe" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="configuration.operation.html" class="btn btn-neutral float-right" title="casual configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
@@ -178,7 +187,7 @@
     <dl>
       <dt>Branches</dt>
       <dd><a href="call.operation.html">feature/1.7/main</a></dd>
-      <dd><a href="../../../../../../../patch/1.6/main/middleware/administration/documentation/cli/call.operation.html">patch/1.6/main</a></dd>
+      <dd><a href="../../../../../release-notes/middleware/administration/documentation/cli/call.operation.html">feature/1.7/release-notes</a></dd>
       <dd><a href="../../../../../../../release/1.6/middleware/administration/documentation/cli/call.operation.html">release/1.6</a></dd>
     </dl>
   </div>

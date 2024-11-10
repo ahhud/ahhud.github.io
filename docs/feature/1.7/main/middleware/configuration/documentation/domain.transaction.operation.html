@@ -45,7 +45,13 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">introduction</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../README.html">summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html">Get started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html#documentation">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html#contributing">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html#release-notes">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html#build-status">Build status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html#downloads">Downloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html#license">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../documentation/components.html">components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../documentation/user-particles.html">user particles</a></li>
 </ul>
@@ -57,6 +63,7 @@
 <li class="toctree-l2"><a class="reference internal" href="domain.gateway.operation.html">configuration gateway</a></li>
 <li class="toctree-l2"><a class="reference internal" href="domain.general.operation.html">configuration domain (general)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="domain.queue.operation.html">configuration queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domain.queue.operation.html#head">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">configuration transaction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="system.operation.html">configuration system</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../buffer/documentation/field.operation.html">field operation</a></li>
@@ -172,73 +179,13 @@ this state is persistent stored, before the actual commit stage.</p>
 </section>
 </section>
 <section id="examples">
-<h2>examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
-<p>Below follows examples in <code class="docutils literal notranslate"><span class="pre">yaml</span></code> and <code class="docutils literal notranslate"><span class="pre">json</span></code> <em>(casual can also handle <code class="docutils literal notranslate"><span class="pre">ini</span></code> and <code class="docutils literal notranslate"><span class="pre">xml</span></code>)</em></p>
-<section id="yaml">
-<h3>yaml<a class="headerlink" href="#yaml" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
-<span class="nt">domain</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">transaction</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">default</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">resource</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;db2_rm&quot;</span>
-<span class="w">        </span><span class="nt">instances</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
-<span class="w">    </span><span class="nt">log</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/some/fast/disk/domain.A42/transaction.log&quot;</span>
-<span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;customer-db&quot;</span>
-<span class="w">        </span><span class="nt">instances</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
-<span class="w">        </span><span class="nt">note</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;this</span><span class="nv"> </span><span class="s">resource</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">named</span><span class="nv"> </span><span class="s">&#39;customer-db&#39;</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">using</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">default</span><span class="nv"> </span><span class="s">rm-key</span><span class="nv"> </span><span class="s">(db_rm)</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">overrides</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">default</span><span class="nv"> </span><span class="s">rm-instances</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">5&quot;</span>
-<span class="w">        </span><span class="nt">openinfo</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;db=customer,uid=db2,pwd=db2&quot;</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;sales-db&quot;</span>
-<span class="w">        </span><span class="nt">note</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;this</span><span class="nv"> </span><span class="s">resource</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">named</span><span class="nv"> </span><span class="s">&#39;sales-db&#39;</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">using</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">default</span><span class="nv"> </span><span class="s">rm-key</span><span class="nv"> </span><span class="s">(db_rm)</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">using</span><span class="nv"> </span><span class="s">default</span><span class="nv"> </span><span class="s">rm-instances&quot;</span>
-<span class="w">        </span><span class="nt">openinfo</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;db=sales,uid=db2,pwd=db2&quot;</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;event-queue&quot;</span>
-<span class="w">        </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mq_rm&quot;</span>
-<span class="w">        </span><span class="nt">note</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;this</span><span class="nv"> </span><span class="s">resource</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">named</span><span class="nv"> </span><span class="s">&#39;event-queue&#39;</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">overrides</span><span class="nv"> </span><span class="s">rm-key</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">using</span><span class="nv"> </span><span class="s">default</span><span class="nv"> </span><span class="s">rm-instances&quot;</span>
-<span class="w">        </span><span class="nt">openinfo</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;some-mq-specific-stuff&quot;</span>
-<span class="w">        </span><span class="nt">closeinfo</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;some-mq-specific-stuff&quot;</span>
-<span class="nn">...</span>
-</pre></div>
-</div>
-</section>
-<section id="json">
-<h3>json<a class="headerlink" href="#json" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;domain&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;transaction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;default&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;db2_rm&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;instances&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="nt">&quot;log&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/some/fast/disk/domain.A42/transaction.log&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;resources&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;customer-db&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;instances&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;this resource is named &#39;customer-db&#39; - using the default rm-key (db_rm) - overrides the default rm-instances to 5&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;openinfo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;db=customer,uid=db2,pwd=db2&quot;</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sales-db&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;this resource is named &#39;sales-db&#39; - using the default rm-key (db_rm) - using default rm-instances&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;openinfo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;db=sales,uid=db2,pwd=db2&quot;</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;event-queue&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mq_rm&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;this resource is named &#39;event-queue&#39; - overrides rm-key - using default rm-instances&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;openinfo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;some-mq-specific-stuff&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;closeinfo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;some-mq-specific-stuff&quot;</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">]</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</section>
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../../../_downloads/6eb036f0857974357e9e9d9af7d13a78/transaction.yaml"><span class="xref download myst">domain/transaction.yaml</span></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../../_downloads/0bf63aba1c2209635d6ab656db39b813/transaction.json"><span class="xref download myst">domain/transaction.json</span></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../../_downloads/b6597d2abe1e0dee20df521891ee01f5/transaction.xml"><span class="xref download myst">domain/transaction.xml</span></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../../_downloads/96cae41fd4619507f49e2a86242c18d7/transaction.ini"><span class="xref download myst">domain/transaction.ini</span></a></p></li>
+</ul>
 </section>
 </section>
 
@@ -277,7 +224,7 @@ this state is persistent stored, before the actual commit stage.</p>
     <dl>
       <dt>Branches</dt>
       <dd><a href="domain.transaction.operation.html">feature/1.7/main</a></dd>
-      <dd><a href="../../../../../../patch/1.6/main/middleware/configuration/documentation/domain.transaction.operation.html">patch/1.6/main</a></dd>
+      <dd><a href="../../../../release-notes/middleware/configuration/documentation/domain.transaction.operation.html">feature/1.7/release-notes</a></dd>
       <dd><a href="../../../../../../release/1.6/middleware/configuration/documentation/domain.transaction.operation.html">release/1.6</a></dd>
     </dl>
   </div>

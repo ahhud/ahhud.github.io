@@ -45,7 +45,13 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">introduction</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../README.html">summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html">Get started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#documentation">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#contributing">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#release-notes">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#build-status">Build status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#downloads">Downloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#license">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../documentation/components.html">components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../documentation/user-particles.html">user particles</a></li>
 </ul>
@@ -57,6 +63,7 @@
 <li class="toctree-l3"><a class="reference internal" href="casual.operation.html">casual</a></li>
 <li class="toctree-l3"><a class="reference internal" href="buffer.operation.html">casual buffer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="call.operation.html">casual call</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.operation.html">casual configuration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="describe.operation.html">casual describe</a></li>
 <li class="toctree-l3"><a class="reference internal" href="discovery.operation.html">casual discovery</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">casual domain</a></li>
@@ -71,6 +78,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.gateway.operation.html">configuration gateway</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.general.operation.html">configuration domain (general)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.queue.operation.html">configuration queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.queue.operation.html#head">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.transaction.operation.html">configuration transaction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/system.operation.html">configuration system</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../buffer/documentation/field.operation.html">field operation</a></li>
@@ -113,107 +121,113 @@
              
   <section id="casual-domain">
 <h1>casual domain<a class="headerlink" href="#casual-domain" title="Permalink to this heading">¶</a></h1>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>host#<span class="w"> </span>casual<span class="w"> </span>--help<span class="w"> </span>domain
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">host# casual --help domain</span>
 
-<span class="w">  </span>domain<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">        </span><span class="nb">local</span><span class="w"> </span>casual<span class="w"> </span>domain<span class="w"> </span>related<span class="w"> </span>administration
+<span class="go">domain [0..1]</span>
+<span class="go">     local casual domain related administration</span>
 
-<span class="w">    </span>SUB<span class="w"> </span>OPTIONS
-<span class="w">      </span>-ls,<span class="w"> </span>--list-servers<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>list<span class="w"> </span>all<span class="w"> </span>servers
+<span class="go">   SUB OPTIONS:</span>
 
-<span class="w">      </span>-le,<span class="w"> </span>--list-executables<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>list<span class="w"> </span>all<span class="w"> </span>executables
+<span class="go">      -ls, --list-servers [0..1]</span>
+<span class="go">           list all servers</span>
 
-<span class="w">      </span>-sa,<span class="w"> </span>--scale-aliases<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>&lt;alias&gt;,<span class="w"> </span>&lt;<span class="c1">#&gt;) [2..* {2}]</span>
-<span class="w">            </span>scale<span class="w"> </span>instances<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>provided<span class="w"> </span>aliases
+<span class="go">      -le, --list-executables [0..1]</span>
+<span class="go">           list all executables</span>
 
-<span class="w">            </span>deprecated:<span class="w"> </span><span class="o">[</span>-si,<span class="w"> </span>--scale-instances<span class="o">]</span>
+<span class="go">      -sa, --scale-aliases [0..1]  (&lt;alias&gt;, &lt;#&gt;) [2..*]</span>
+<span class="go">           scale instances for the provided aliases</span>
 
-<span class="w">      </span>-ra,<span class="w"> </span>--restart-aliases<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>&lt;alias&gt;<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">1</span>..*<span class="o">]</span>
-<span class="w">            </span>restart<span class="w"> </span>instances<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>given<span class="w"> </span>aliases
-<span class="w">            </span>
-<span class="w">            </span>note:<span class="w"> </span>some<span class="w"> </span>aliases<span class="w"> </span>are<span class="w"> </span>unrestartable
+<span class="go">      -ra, --restart-aliases [0..1]  (&lt;alias&gt;) [1..*]</span>
+<span class="go">           restart instances for the given aliases</span>
+<span class="go">           </span>
+<span class="go">           note: some aliases are unrestartable</span>
 
-<span class="w">            </span>deprecated:<span class="w"> </span><span class="o">[</span>-ri,<span class="w"> </span>--restart-instances<span class="o">]</span>
+<span class="go">      -rg, --restart-groups [0..1]  (&lt;group&gt;) [0..*]</span>
+<span class="go">           restart all instances for aliases that are members of the provided groups</span>
+<span class="go">           </span>
+<span class="go">           if no groups are provided, all groups are restated.</span>
+<span class="go">           </span>
+<span class="go">           note: some aliases are unrestartable</span>
 
-<span class="w">      </span>-rg,<span class="w"> </span>--restart-groups<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>&lt;group&gt;<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">0</span>..*<span class="o">]</span>
-<span class="w">            </span>restart<span class="w"> </span>all<span class="w"> </span>instances<span class="w"> </span><span class="k">for</span><span class="w"> </span>aliases<span class="w"> </span>that<span class="w"> </span>are<span class="w"> </span>members<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>provided<span class="w"> </span>groups
-<span class="w">            </span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span>no<span class="w"> </span>groups<span class="w"> </span>are<span class="w"> </span>provided,<span class="w"> </span>all<span class="w"> </span>groups<span class="w"> </span>are<span class="w"> </span>restated.
-<span class="w">            </span>
-<span class="w">            </span>note:<span class="w"> </span>some<span class="w"> </span>aliases<span class="w"> </span>are<span class="w"> </span>unrestartable
+<span class="go">      -lis, --list-instances-server [0..1]</span>
+<span class="go">           list all running server instances</span>
 
-<span class="w">      </span>-lis,<span class="w"> </span>--list-instances-server<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>list<span class="w"> </span>all<span class="w"> </span>running<span class="w"> </span>server<span class="w"> </span>instances
+<span class="go">      -lie, --list-instances-executable [0..1]</span>
+<span class="go">           list all running executable instances</span>
 
-<span class="w">      </span>-lie,<span class="w"> </span>--list-instances-executable<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>list<span class="w"> </span>all<span class="w"> </span>running<span class="w"> </span>executable<span class="w"> </span>instances
+<span class="go">      -b, --boot [0..1]  (&lt;glob patterns&gt;) [0..*]</span>
+<span class="go">           boot domain</span>
+<span class="go">           </span>
+<span class="go">           With supplied configuration files, in the form of glob patterns.</span>
 
-<span class="w">      </span>-b,<span class="w"> </span>--boot<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>&lt;glob<span class="w"> </span>patterns&gt;<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">0</span>..*<span class="o">]</span>
-<span class="w">            </span>boot<span class="w"> </span>domain
-<span class="w">            </span>
-<span class="w">            </span>With<span class="w"> </span>supplied<span class="w"> </span>configuration<span class="w"> </span>files,<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>form<span class="w"> </span>of<span class="w"> </span>glob<span class="w"> </span>patterns.
+<span class="go">      --boot-strict [0..1]  (&lt;glob patterns&gt;) [0..*]</span>
+<span class="go">           boot domain</span>
+<span class="go">           </span>
+<span class="go">           With supplied configuration files, in the form of glob patterns.</span>
+<span class="go">           </span>
+<span class="go">           Fails if any configured server/executable fails to start or exits with an error during the boot sequence.</span>
 
-<span class="w">      </span>-s,<span class="w"> </span>--shutdown<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>shutdown<span class="w"> </span>domain
+<span class="go">      -s, --shutdown [0..1]</span>
+<span class="go">           shutdown domain</span>
 
-<span class="w">      </span>--set-environment<span class="w"> </span><span class="o">[</span><span class="m">0</span>..*<span class="o">]</span><span class="w">  </span><span class="o">(</span>&lt;variable&gt;,<span class="w"> </span>&lt;value&gt;,<span class="w"> </span><span class="o">[</span>&lt;alias&gt;*<span class="o">])</span><span class="w"> </span><span class="o">[</span><span class="m">2</span>..*<span class="o">]</span>
-<span class="w">            </span><span class="nb">set</span><span class="w"> </span>an<span class="w"> </span>environment<span class="w"> </span>variable<span class="w"> </span><span class="k">for</span><span class="w"> </span>explicit<span class="w"> </span>aliases
-<span class="w">                                 </span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>aliases<span class="w"> </span>are<span class="w"> </span>provided,<span class="w"> </span>the<span class="w"> </span>environment<span class="w"> </span>variable<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span><span class="nb">set</span><span class="w"> </span>
-<span class="w">            </span><span class="k">for</span><span class="w"> </span>all<span class="w"> </span>servers<span class="w"> </span>and<span class="w"> </span>executables<span class="w"> </span>
-<span class="w">                                 </span>
+<span class="go">      --set-environment [0..*]  (&lt;variable&gt;, &lt;value&gt;, [&lt;alias&gt;*]) [2..*]</span>
+<span class="go">           set an environment variable for explicit aliases</span>
+<span class="go">                                </span>
+<span class="go">           if 0 aliases are provided, the environment variable will be set </span>
+<span class="go">           for all servers and executables </span>
+<span class="go">                                </span>
 
-<span class="w">      </span>--configuration-get<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>json,<span class="w"> </span>yaml,<span class="w"> </span>xml,<span class="w"> </span>ini<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>get<span class="w"> </span>current<span class="w"> </span>configuration
+<span class="go">      --unset-environment [0..*]  (&lt;variable&gt;, [&lt;alias&gt;*]) [1..*]</span>
+<span class="go">           unset an environment variable for explicit aliases</span>
+<span class="go">                                </span>
+<span class="go">           if 0 aliases are provided, the environment variable will be unset </span>
+<span class="go">           for all servers and executables </span>
+<span class="go">                                </span>
 
-<span class="w">      </span>--configuration-post<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>json,<span class="w"> </span>yaml,<span class="w"> </span>xml,<span class="w"> </span>ini<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">1</span><span class="o">]</span>
-<span class="w">            </span>reads<span class="w"> </span>configuration<span class="w"> </span>from<span class="w"> </span>stdin<span class="w"> </span>and<span class="w"> </span>replaces<span class="w"> </span>the<span class="w"> </span>domain<span class="w"> </span>configuration
-<span class="w">            </span>
-<span class="w">            </span>casual<span class="w"> </span>will<span class="w"> </span>try<span class="w"> </span>to<span class="w"> </span>conform<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>new<span class="w"> </span>configuration<span class="w"> </span>as<span class="w"> </span>smooth<span class="w"> </span>as<span class="w"> </span>possible.<span class="w"> </span>Although,<span class="w"> </span>there<span class="w"> </span>could<span class="w"> </span>be<span class="w"> </span>some<span class="w"> </span><span class="s2">&quot;noise&quot;</span>
-<span class="w">            </span>depending<span class="w"> </span>on<span class="w"> </span>what<span class="w"> </span>parts<span class="w"> </span>are<span class="w"> </span>updated.
+<span class="go">      --ping [0..1]  (&lt;alias&gt;) [1..*]</span>
+<span class="go">           ping all instances of the provided server alias</span>
 
-<span class="w">      </span>--configuration-edit<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>json,<span class="w"> </span>yaml,<span class="w"> </span>xml,<span class="w"> </span>ini<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>get<span class="w"> </span>current<span class="w"> </span>configuration,<span class="w"> </span>starts<span class="w"> </span>an<span class="w"> </span>editor,<span class="w"> </span>on<span class="w"> </span>quit<span class="w"> </span>the<span class="w"> </span>edited<span class="w"> </span>configuration<span class="w"> </span>is<span class="w"> </span>posted.
-<span class="w">            </span>
-<span class="w">            </span>The<span class="w"> </span>editor<span class="w"> </span>is<span class="w"> </span>deduced<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>environment<span class="w"> </span>variables,<span class="w"> </span><span class="k">in</span><span class="w"> </span>this<span class="w"> </span>order:
-<span class="w">              </span>*<span class="w"> </span>CASUAL_TERMINAL_EDITOR
-<span class="w">              </span>*<span class="w"> </span>VISUAL
-<span class="w">              </span>*<span class="w"> </span>EDITOR
-<span class="w">            </span>
-<span class="w">            </span>If<span class="w"> </span>none<span class="w"> </span>is<span class="w"> </span>set,<span class="w"> </span><span class="sb">`</span>vi<span class="sb">`</span><span class="w"> </span>is<span class="w"> </span>used.
-<span class="w">            </span>
-<span class="w">            </span>If<span class="w"> </span>no<span class="w"> </span>changes<span class="w"> </span>are<span class="w"> </span>detected,<span class="w"> </span>no<span class="w"> </span>update<span class="w"> </span>will<span class="w"> </span>take<span class="w"> </span>place.
+<span class="go">      --instance-global-state [0..1]  (&lt;pid&gt;, [&lt;format&gt;]) [1..2]</span>
+<span class="go">           get the &#39;global state&#39; for the provided pid</span>
 
-<span class="w">      </span>--configuration-put<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>json,<span class="w"> </span>yaml,<span class="w"> </span>xml,<span class="w"> </span>ini<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">1</span><span class="o">]</span>
-<span class="w">            </span>reads<span class="w"> </span>configuration<span class="w"> </span>from<span class="w"> </span>stdin<span class="w"> </span>and<span class="w"> </span>adds<span class="w"> </span>or<span class="w"> </span>updates<span class="w"> </span>parts
-<span class="w">            </span>
-<span class="w">            </span>The<span class="w"> </span>semantics<span class="w"> </span>are<span class="w"> </span>similar<span class="w"> </span>to<span class="w"> </span>http<span class="w"> </span>PUT:
-<span class="w">            </span>*<span class="w"> </span>every<span class="w"> </span>key<span class="w"> </span>that<span class="w"> </span>is<span class="w"> </span>found<span class="w"> </span>is<span class="w"> </span>treated<span class="w"> </span>as<span class="w"> </span>an<span class="w"> </span>update<span class="w"> </span>of<span class="w"> </span>that<span class="w"> </span>_entity_
-<span class="w">            </span>*<span class="w"> </span>every<span class="w"> </span>key<span class="w"> </span>that<span class="w"> </span>is<span class="w"> </span>NOT<span class="w"> </span>found<span class="w"> </span>is<span class="w"> </span>treated<span class="w"> </span>as<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </span>_entity_<span class="w"> </span>and<span class="w"> </span>added<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>current<span class="w"> </span>state<span class="w"> </span>
+<span class="go">      --legend [0..1]</span>
+<span class="go">           the legend for the supplied option</span>
+<span class="go">           </span>
+<span class="go">           Documentation and description for abbreviations and acronyms used as columns in output</span>
+<span class="go">           </span>
+<span class="go">           The following options has legend:</span>
 
-<span class="w">      </span>--ping<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>&lt;alias&gt;<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">1</span>..*<span class="o">]</span>
-<span class="w">            </span>ping<span class="w"> </span>all<span class="w"> </span>instances<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>provided<span class="w"> </span>server<span class="w"> </span><span class="nb">alias</span>
+<span class="go">         SUB OPTIONS:</span>
 
-<span class="w">      </span>--instance-global-state<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>&lt;pid&gt;,<span class="w"> </span><span class="o">[</span>&lt;format&gt;<span class="o">])</span><span class="w"> </span><span class="o">[</span><span class="m">1</span>..2<span class="o">]</span>
-<span class="w">            </span>get<span class="w"> </span>the<span class="w"> </span><span class="s1">&#39;global state&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>provided<span class="w"> </span>pid
+<span class="go">            --list-servers [0..1]</span>
+<span class="go">                 list legend for --list-servers</span>
 
-<span class="w">      </span>--legend<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>list-executables,<span class="w"> </span>list-servers,<span class="w"> </span>ping<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">1</span><span class="o">]</span>
-<span class="w">            </span>the<span class="w"> </span>legend<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>supplied<span class="w"> </span>option
-<span class="w">            </span>
-<span class="w">            </span>Documentation<span class="w"> </span>and<span class="w"> </span>description<span class="w"> </span><span class="k">for</span><span class="w"> </span>abbreviations<span class="w"> </span>and<span class="w"> </span>acronyms<span class="w"> </span>used<span class="w"> </span>as<span class="w"> </span>columns<span class="w"> </span><span class="k">in</span><span class="w"> </span>output
-<span class="w">            </span>
-<span class="w">            </span>note:<span class="w"> </span>not<span class="w"> </span>all<span class="w"> </span>options<span class="w"> </span>has<span class="w"> </span>legend,<span class="w"> </span>use<span class="w"> </span><span class="s1">&#39;auto complete&#39;</span><span class="w"> </span>to<span class="w"> </span>find<span class="w"> </span>out<span class="w"> </span>which<span class="w"> </span>legends<span class="w"> </span>are<span class="w"> </span>supported.
+<span class="go">            --list-executables [0..1]</span>
+<span class="go">                 list legend for --list-executables</span>
 
-<span class="w">      </span>--information<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>collect<span class="w"> </span>aggregated<span class="w"> </span>general<span class="w"> </span>information<span class="w"> </span>about<span class="w"> </span>this<span class="w"> </span>domain
+<span class="go">            --ping [0..1]</span>
+<span class="go">                 list legend for --ping</span>
 
-<span class="w">      </span>--state<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>json,<span class="w"> </span>yaml,<span class="w"> </span>xml,<span class="w"> </span>ini,<span class="w"> </span>line<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>prints<span class="w"> </span>state<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>provided<span class="w"> </span>format<span class="w"> </span>to<span class="w"> </span>stdout
+<span class="go">      --information [0..1]</span>
+<span class="go">           collect aggregated general information about this domain</span>
 
-<span class="w">      </span>--log-reopen<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>reopen<span class="w"> </span>casual.log<span class="w"> </span>by<span class="w"> </span>sending<span class="w"> </span>SIGHUP<span class="w"> </span>to<span class="w"> </span>all<span class="w"> </span>servers,<span class="w"> </span>and<span class="w"> </span>outputs<span class="w"> </span>all<span class="w"> </span>running<span class="w"> </span>executables
+<span class="go">      --state [0..1]  (json, yaml, xml, ini, line) [0..1]</span>
+<span class="go">           prints state in the provided format to stdout</span>
+
+<span class="go">      --log-reopen [0..1]</span>
+<span class="go">           reopen casual.log by sending SIGHUP to all servers, and outputs all running executables</span>
+
+<span class="go">      [deprecated] --configuration-get [0..1]  (json, yaml, xml, ini) [0..1]</span>
+<span class="go">           @deprecated: use `casual configuration --get`</span>
+
+<span class="go">      [deprecated] --configuration-post [0..1]  (json, yaml, xml, ini) [1]</span>
+<span class="go">           @deprecated: use `casual configuration --post`</span>
+
+<span class="go">      [deprecated] --configuration-edit [0..1]  (json, yaml, xml, ini) [0..1]</span>
+<span class="go">           @deprecated: use `casual configuration --edit`</span>
+
+<span class="go">      [deprecated] --configuration-put [0..1]  (json, yaml, xml, ini) [1]</span>
+<span class="go">           @deprecated: use `casual configuration --put`</span>
 </pre></div>
 </div>
 </section>
@@ -253,7 +267,7 @@
     <dl>
       <dt>Branches</dt>
       <dd><a href="domain.operation.html">feature/1.7/main</a></dd>
-      <dd><a href="../../../../../../../patch/1.6/main/middleware/administration/documentation/cli/domain.operation.html">patch/1.6/main</a></dd>
+      <dd><a href="../../../../../release-notes/middleware/administration/documentation/cli/domain.operation.html">feature/1.7/release-notes</a></dd>
       <dd><a href="../../../../../../../release/1.6/middleware/administration/documentation/cli/domain.operation.html">release/1.6</a></dd>
     </dl>
   </div>

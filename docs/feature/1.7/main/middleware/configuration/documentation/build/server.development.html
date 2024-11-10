@@ -45,7 +45,13 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">introduction</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../README.html">summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html">Get started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#documentation">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#contributing">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#release-notes">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#build-status">Build status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#downloads">Downloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#license">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../documentation/components.html">components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../documentation/user-particles.html">user particles</a></li>
 </ul>
@@ -134,75 +140,13 @@ resource, then startup configuration phase will ask for resource configuration f
 given name. This is the preferred way, since it is a lot more explicit.</p>
 </section>
 <section id="examples">
-<h2>examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
-<p>Below follows examples in <code class="docutils literal notranslate"><span class="pre">yaml</span></code> and <code class="docutils literal notranslate"><span class="pre">json</span></code> <em>(casual can also handle <code class="docutils literal notranslate"><span class="pre">ini</span></code> and <code class="docutils literal notranslate"><span class="pre">xml</span></code>)</em></p>
-<section id="yaml">
-<h3>yaml<a class="headerlink" href="#yaml" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
-<span class="nt">server</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">default</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">service</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">transaction</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;join&quot;</span>
-<span class="w">      </span><span class="nt">category</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;some.category&quot;</span>
-<span class="w">  </span><span class="nt">resources</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;rm-mockup&quot;</span>
-<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;resource-1&quot;</span>
-<span class="w">      </span><span class="nt">note</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;the</span><span class="nv"> </span><span class="s">runtime</span><span class="nv"> </span><span class="s">configuration</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">this</span><span class="nv"> </span><span class="s">resource</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">correlated</span><span class="nv"> </span><span class="s">with</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">name</span><span class="nv"> </span><span class="s">&#39;resource-1&#39;</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">no</span><span class="nv"> </span><span class="s">group</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">needed</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">resource</span><span class="nv"> </span><span class="s">configuration&quot;</span>
-<span class="w">  </span><span class="nt">services</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;s1&quot;</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;s2&quot;</span>
-<span class="w">      </span><span class="nt">transaction</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;auto&quot;</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;s3&quot;</span>
-<span class="w">      </span><span class="nt">function</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;f3&quot;</span>
-<span class="w">      </span><span class="nt">visibility</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;undiscoverable&quot;</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;s4&quot;</span>
-<span class="w">      </span><span class="nt">function</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;f4&quot;</span>
-<span class="w">      </span><span class="nt">category</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;some.other.category&quot;</span>
-<span class="nn">...</span>
-</pre></div>
-</div>
-</section>
-<section id="json">
-<h3>json<a class="headerlink" href="#json" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;server&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;default&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;service&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;transaction&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;join&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;category&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;some.category&quot;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="nt">&quot;resources&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rm-mockup&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;resource-1&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;the runtime configuration for this resource is correlated with the name &#39;resource-1&#39; - no group is needed for resource configuration&quot;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">],</span>
-<span class="w">        </span><span class="nt">&quot;services&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;s1&quot;</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;s2&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;transaction&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;auto&quot;</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;s3&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;function&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f3&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;visibility&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;undiscoverable&quot;</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;s4&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;function&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f4&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;category&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;some.other.category&quot;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">]</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</section>
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../../../../_downloads/f57958d12147e5f8f5832f92d4ea1363/server.yaml"><span class="xref download myst">build/server.yaml</span></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../../../_downloads/094df6e0db11096b7096d19c8945910d/server.json"><span class="xref download myst">build/server.json</span></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../../../_downloads/c1f39c3e227f5207288f2fca520ba657/server.xml"><span class="xref download myst">build/server.xml</span></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../../../_downloads/d83b40046e972dd71babbe8fff310aab/server.ini"><span class="xref download myst">build/server.ini</span></a></p></li>
+</ul>
 </section>
 </section>
 
@@ -241,7 +185,7 @@ given name. This is the preferred way, since it is a lot more explicit.</p>
     <dl>
       <dt>Branches</dt>
       <dd><a href="server.development.html">feature/1.7/main</a></dd>
-      <dd><a href="../../../../../../../patch/1.6/main/middleware/configuration/documentation/build/server.development.html">patch/1.6/main</a></dd>
+      <dd><a href="../../../../../release-notes/middleware/configuration/documentation/build/server.development.html">feature/1.7/release-notes</a></dd>
       <dd><a href="../../../../../../../release/1.6/middleware/configuration/documentation/build/server.development.html">release/1.6</a></dd>
     </dl>
   </div>

@@ -45,7 +45,13 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">introduction</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../README.html">summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html">Get started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#documentation">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#contributing">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#release-notes">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#build-status">Build status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#downloads">Downloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#license">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../documentation/components.html">components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../documentation/user-particles.html">user particles</a></li>
 </ul>
@@ -57,6 +63,7 @@
 <li class="toctree-l3"><a class="reference internal" href="casual.operation.html">casual</a></li>
 <li class="toctree-l3"><a class="reference internal" href="buffer.operation.html">casual buffer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="call.operation.html">casual call</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.operation.html">casual configuration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="describe.operation.html">casual describe</a></li>
 <li class="toctree-l3"><a class="reference internal" href="discovery.operation.html">casual discovery</a></li>
 <li class="toctree-l3"><a class="reference internal" href="domain.operation.html">casual domain</a></li>
@@ -71,6 +78,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.gateway.operation.html">configuration gateway</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.general.operation.html">configuration domain (general)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.queue.operation.html">configuration queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.queue.operation.html#head">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.transaction.operation.html">configuration transaction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/system.operation.html">configuration system</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../buffer/documentation/field.operation.html">field operation</a></li>
@@ -113,46 +121,48 @@
              
   <section id="casual-gateway">
 <h1>casual gateway<a class="headerlink" href="#casual-gateway" title="Permalink to this heading">¶</a></h1>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>host#<span class="w"> </span>casual<span class="w"> </span>--help<span class="w"> </span>gateway
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">host# casual --help gateway</span>
 
-<span class="w">  </span>gateway<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">        </span>gateway<span class="w"> </span>related<span class="w"> </span>administration
+<span class="go">gateway [0..1]</span>
+<span class="go">     gateway related administration</span>
 
-<span class="w">    </span>SUB<span class="w"> </span>OPTIONS
-<span class="w">      </span>-lc,<span class="w"> </span>--list-connections<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>list<span class="w"> </span>all<span class="w"> </span>connections
+<span class="go">   SUB OPTIONS:</span>
 
-<span class="w">            </span>deprecated:<span class="w"> </span><span class="o">[</span>-c<span class="o">]</span>
+<span class="go">      -lc, --list-connections [0..1]</span>
+<span class="go">           list all connections</span>
 
-<span class="w">      </span>-ll,<span class="w"> </span>--list-listeners<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>list<span class="w"> </span>all<span class="w"> </span>listeners
+<span class="go">      -ll, --list-listeners [0..1]</span>
+<span class="go">           list all listeners</span>
 
-<span class="w">            </span>deprecated:<span class="w"> </span><span class="o">[</span>-l<span class="o">]</span>
+<span class="go">      --list-inbound-groups [0..1]</span>
+<span class="go">           list all inbound groups</span>
 
-<span class="w">      </span>-ls,<span class="w"> </span>--list-services<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>list<span class="w"> </span>all<span class="w"> </span>services<span class="w"> </span>and<span class="w"> </span>connections
+<span class="go">      --list-outbound-groups [0..1]</span>
+<span class="go">           list all outbound groups</span>
 
-<span class="w">      </span>-lq,<span class="w"> </span>--list-queues<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>list<span class="w"> </span>all<span class="w"> </span>queues<span class="w"> </span>and<span class="w"> </span>connections
+<span class="go">      --legend [0..1]</span>
+<span class="go">           show legend for the output of the supplied option</span>
+<span class="go">           </span>
+<span class="go">           Documentation and description for abbreviations and acronyms used as columns in output</span>
+<span class="go">           </span>
+<span class="go">           The following options has legend:                       </span>
 
-<span class="w">      </span>--list-inbound-groups<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>list<span class="w"> </span>all<span class="w"> </span>inbound<span class="w"> </span>groups
+<span class="go">         SUB OPTIONS:</span>
 
-<span class="w">      </span>--list-outbound-groups<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>list<span class="w"> </span>all<span class="w"> </span>outbound<span class="w"> </span>groups
+<span class="go">            --list-connections [0..1]</span>
+<span class="go">                 list legend for --list-connections</span>
 
-<span class="w">      </span>--legend<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>list-connections<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">1</span><span class="o">]</span>
-<span class="w">            </span>show<span class="w"> </span>legend<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>output<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>supplied<span class="w"> </span>option
-<span class="w">            </span>
-<span class="w">            </span>Documentation<span class="w"> </span>and<span class="w"> </span>description<span class="w"> </span><span class="k">for</span><span class="w"> </span>abbreviations<span class="w"> </span>and<span class="w"> </span>acronyms<span class="w"> </span>used<span class="w"> </span>as<span class="w"> </span>columns<span class="w"> </span><span class="k">in</span><span class="w"> </span>output
-<span class="w">            </span>
-<span class="w">            </span>note:<span class="w"> </span>not<span class="w"> </span>all<span class="w"> </span>options<span class="w"> </span>has<span class="w"> </span>legend,<span class="w"> </span>use<span class="w"> </span><span class="s1">&#39;auto complete&#39;</span><span class="w"> </span>to<span class="w"> </span>find<span class="w"> </span>out<span class="w"> </span>which<span class="w"> </span>legends<span class="w"> </span>are<span class="w"> </span>supported.<span class="w">                        </span>
+<span class="go">      --state [0..1]  (json, yaml, xml, ini, line) [0..1]</span>
+<span class="go">           prints state in the provided format to stdout</span>
 
-<span class="w">      </span>--state<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>json,<span class="w"> </span>yaml,<span class="w"> </span>xml,<span class="w"> </span>ini,<span class="w"> </span>line<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>prints<span class="w"> </span>state<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>provided<span class="w"> </span>format<span class="w"> </span>to<span class="w"> </span>stdout
+<span class="go">      [deprecated] -ls, --list-services [0..1]</span>
+<span class="go">           removed - use casual service --list-instances</span>
 
-<span class="w">      </span><span class="o">[</span>deprecated<span class="o">]</span><span class="w"> </span>--rediscover<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>moved<span class="w"> </span>to<span class="w"> </span>casual<span class="w"> </span>discover<span class="w"> </span>--rediscover
+<span class="go">      [deprecated] -lq, --list-queues [0..1]</span>
+<span class="go">           removed - use casual queue --list-instance</span>
+
+<span class="go">      [deprecated] --rediscover [0..1]</span>
+<span class="go">           moved to casual discover --rediscover</span>
 </pre></div>
 </div>
 </section>
@@ -192,7 +202,7 @@
     <dl>
       <dt>Branches</dt>
       <dd><a href="gateway.operation.html">feature/1.7/main</a></dd>
-      <dd><a href="../../../../../../../patch/1.6/main/middleware/administration/documentation/cli/gateway.operation.html">patch/1.6/main</a></dd>
+      <dd><a href="../../../../../release-notes/middleware/administration/documentation/cli/gateway.operation.html">feature/1.7/release-notes</a></dd>
       <dd><a href="../../../../../../../release/1.6/middleware/administration/documentation/cli/gateway.operation.html">release/1.6</a></dd>
     </dl>
   </div>

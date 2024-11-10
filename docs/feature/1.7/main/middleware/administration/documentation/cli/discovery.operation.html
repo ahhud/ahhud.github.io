@@ -45,7 +45,13 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">introduction</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../README.html">summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html">Get started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#documentation">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#contributing">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#release-notes">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#build-status">Build status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#downloads">Downloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#license">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../documentation/components.html">components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../documentation/user-particles.html">user particles</a></li>
 </ul>
@@ -57,6 +63,7 @@
 <li class="toctree-l3"><a class="reference internal" href="casual.operation.html">casual</a></li>
 <li class="toctree-l3"><a class="reference internal" href="buffer.operation.html">casual buffer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="call.operation.html">casual call</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.operation.html">casual configuration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="describe.operation.html">casual describe</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">casual discovery</a></li>
 <li class="toctree-l3"><a class="reference internal" href="domain.operation.html">casual domain</a></li>
@@ -71,6 +78,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.gateway.operation.html">configuration gateway</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.general.operation.html">configuration domain (general)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.queue.operation.html">configuration queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.queue.operation.html#head">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.transaction.operation.html">configuration transaction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/system.operation.html">configuration system</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../buffer/documentation/field.operation.html">field operation</a></li>
@@ -113,57 +121,54 @@
              
   <section id="casual-discovery">
 <h1>casual discovery<a class="headerlink" href="#casual-discovery" title="Permalink to this heading">¶</a></h1>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>host#<span class="w"> </span>casual<span class="w"> </span>--help<span class="w"> </span>discovery
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">host# casual --help discovery</span>
 
-<span class="w">  </span>discovery<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">        </span>responsible<span class="w"> </span><span class="k">for</span><span class="w"> </span>discovery<span class="w"> </span>stuff
+<span class="go">discovery [0..1]</span>
+<span class="go">     responsible for discovery stuff</span>
 
-<span class="w">    </span>SUB<span class="w"> </span>OPTIONS
-<span class="w">      </span>--list-providers<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>INCUBATION<span class="w"> </span>-<span class="w"> </span>list<span class="w"> </span>current<span class="w"> </span>discovery<span class="w"> </span>providers
-<span class="w">            </span>
-<span class="w">            </span>These<span class="w"> </span>are<span class="w"> </span>the<span class="w"> </span>providers<span class="w"> </span>that<span class="w"> </span>has<span class="w"> </span>registered<span class="w"> </span>them<span class="w"> </span>self<span class="w"> </span>with<span class="w"> </span>discovery<span class="w"> </span>abilities
-<span class="w">            </span>
-<span class="w">            </span>@attention<span class="w"> </span>INCUBATION<span class="w"> </span>-<span class="w"> </span>might<span class="w"> </span>change<span class="w"> </span>during,<span class="w"> </span>or<span class="w"> </span><span class="k">in</span><span class="w"> </span>between<span class="w"> </span>minor<span class="w"> </span>version.
+<span class="go">   SUB OPTIONS:</span>
 
-<span class="w">      </span>--services<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>&lt;value&gt;<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">1</span>..*<span class="o">]</span>
-<span class="w">            </span>force<span class="w"> </span>discover<span class="w"> </span>of<span class="w"> </span>provided<span class="w"> </span>services
-<span class="w">            </span>
-<span class="w">            </span>Will<span class="w"> </span>try<span class="w"> </span>to<span class="w"> </span>find<span class="w"> </span>provided<span class="w"> </span>services<span class="w"> </span><span class="k">in</span><span class="w"> </span>other<span class="w"> </span>domains.
+<span class="go">      --list-providers [0..1]</span>
+<span class="go">           INCUBATION - list current discovery providers</span>
+<span class="go">           </span>
+<span class="go">           These are the providers that has registered them self with discovery abilities</span>
+<span class="go">           </span>
+<span class="go">           @attention INCUBATION - might change during, or in between minor version.</span>
 
-<span class="w">      </span>--queues<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>&lt;value&gt;<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">1</span>..*<span class="o">]</span>
-<span class="w">            </span>force<span class="w"> </span>discover<span class="w"> </span>of<span class="w"> </span>provided<span class="w"> </span>queues
-<span class="w">            </span>
-<span class="w">            </span>Will<span class="w"> </span>try<span class="w"> </span>to<span class="w"> </span>find<span class="w"> </span>provided<span class="w"> </span>queues<span class="w"> </span><span class="k">in</span><span class="w"> </span>other<span class="w"> </span>domains.
+<span class="go">      --services [0..1]  (&lt;value&gt;) [1..*]</span>
+<span class="go">           force discover of provided services</span>
+<span class="go">           </span>
+<span class="go">           Will try to find provided services in other domains.</span>
 
-<span class="w">      </span>--rediscover<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>rediscover<span class="w"> </span>all<span class="w"> </span><span class="s1">&#39;discoverable&#39;</span><span class="w"> </span>agents
+<span class="go">      --queues [0..1]  (&lt;value&gt;) [1..*]</span>
+<span class="go">           force discover of provided queues</span>
+<span class="go">           </span>
+<span class="go">           Will try to find provided queues in other domains.</span>
 
-<span class="w">      </span>--metric<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>list<span class="w"> </span>metrics
-<span class="w">            </span>
-<span class="w">            </span>List<span class="w"> </span>counts<span class="w"> </span>of<span class="w"> </span>_discovery<span class="w"> </span>tasks_<span class="w"> </span>the<span class="w"> </span>domain-discovery<span class="w"> </span>has<span class="w"> </span><span class="o">(</span>begun<span class="o">)</span><span class="w"> </span>executed.
-<span class="w">            </span>
-<span class="w">            </span>*<span class="w"> </span>external-discovery:<span class="w"> </span>
-<span class="w">               </span>Requests<span class="w"> </span>to<span class="w"> </span>other<span class="w"> </span>domains
-<span class="w">            </span>*<span class="w"> </span>internal-discovery:<span class="w"> </span>
-<span class="w">               </span>Requests<span class="w"> </span>to<span class="w"> </span><span class="nb">local</span><span class="w"> </span>providers<span class="w"> </span>that<span class="w"> </span>supplies<span class="w"> </span>_resources_<span class="w"> </span><span class="o">(</span>service/queues<span class="o">)</span>
-<span class="w">            </span>*<span class="w"> </span>local-known-request:
-<span class="w">               </span>Requests<span class="w"> </span>to<span class="w"> </span><span class="nb">local</span><span class="w"> </span>providers<span class="w"> </span>about<span class="w"> </span>the<span class="w"> </span>total<span class="w"> </span><span class="nb">set</span><span class="w"> </span>of<span class="w"> </span>known<span class="w"> </span>_resources_<span class="w"> </span><span class="o">(</span>service/queues<span class="o">)</span>
-<span class="w">            </span>*<span class="w"> </span>local-needs-request
-<span class="w">               </span>Requests<span class="w"> </span>to<span class="w"> </span><span class="nb">local</span><span class="w"> </span>providers<span class="w"> </span>about<span class="w"> </span>resources<span class="w"> </span>that<span class="w"> </span>are<span class="w"> </span>needed<span class="w"> </span>but<span class="w"> </span>not<span class="w"> </span>known
-<span class="w">            </span>
-<span class="w">            </span>@attention<span class="w"> </span>INCUBATION<span class="w"> </span>-<span class="w"> </span>might<span class="w"> </span>change<span class="w"> </span>during,<span class="w"> </span>or<span class="w"> </span><span class="k">in</span><span class="w"> </span>between<span class="w"> </span>minor<span class="w"> </span>version.
+<span class="go">      --rediscover [0..1]</span>
+<span class="go">           rediscover all &#39;discoverable&#39; agents</span>
 
-<span class="w">      </span>--metric-message-count<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>list<span class="w"> </span>message<span class="w"> </span>counts
-<span class="w">            </span>
-<span class="w">            </span>Lists<span class="w"> </span>counts<span class="w"> </span>of<span class="w"> </span><span class="s2">&quot;all&quot;</span><span class="w"> </span>internal<span class="w"> </span>messages<span class="w"> </span>that<span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>sent<span class="w"> </span>and<span class="w"> </span>received.<span class="w"> </span>
-<span class="w">            </span>
-<span class="w">            </span>@attention<span class="w"> </span>These<span class="w"> </span>might<span class="w"> </span>change<span class="w"> </span>over<span class="w"> </span>time,<span class="w"> </span>and<span class="w"> </span>between<span class="w"> </span>minor<span class="w"> </span>versions.
+<span class="go">      --metric [0..1]</span>
+<span class="go">           list metrics</span>
+<span class="go">           </span>
+<span class="go">           List counts of _discovery tasks_ the domain-discovery has in-flight and completed</span>
+<span class="go">           </span>
+<span class="go">           * discovery-out: </span>
+<span class="go">              Requests to other domains</span>
+<span class="go">           * discovery-in: </span>
+<span class="go">              Requests from other domains</span>
+<span class="go">           * lookup: </span>
+<span class="go">              Requests to local providers that has service/queues</span>
+<span class="go">           * fetch-known:</span>
+<span class="go">              Requests to local providers about the total set of known service/queues</span>
+<span class="go">           </span>
+<span class="go">           @attention INCUBATION - might change during, or in between minor version.</span>
 
-<span class="w">      </span>--state<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>json,<span class="w"> </span>yaml,<span class="w"> </span>xml,<span class="w"> </span>ini,<span class="w"> </span>line<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">            </span>prints<span class="w"> </span>state<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>provided<span class="w"> </span>format<span class="w"> </span>to<span class="w"> </span>stdout
+<span class="go">      [deprecated] --metric-message-count [0..1]</span>
+<span class="go">           @removed use `casual internal --message-count &lt;pid&gt;` instead</span>
+
+<span class="go">      --state [0..1]  (json, yaml, xml, ini, line) [0..1]</span>
+<span class="go">           prints state in the provided format to stdout</span>
 </pre></div>
 </div>
 </section>
@@ -203,7 +208,7 @@
     <dl>
       <dt>Branches</dt>
       <dd><a href="discovery.operation.html">feature/1.7/main</a></dd>
-      <dd><a href="../../../../../../../patch/1.6/main/middleware/administration/documentation/cli/discovery.operation.html">patch/1.6/main</a></dd>
+      <dd><a href="../../../../../release-notes/middleware/administration/documentation/cli/discovery.operation.html">feature/1.7/release-notes</a></dd>
       <dd><a href="../../../../../../../release/1.6/middleware/administration/documentation/cli/discovery.operation.html">release/1.6</a></dd>
     </dl>
   </div>

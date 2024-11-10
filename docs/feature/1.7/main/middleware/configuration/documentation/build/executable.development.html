@@ -45,7 +45,13 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">introduction</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../README.html">summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html">Get started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#documentation">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#contributing">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#release-notes">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#build-status">Build status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#downloads">Downloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#license">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../documentation/components.html">components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../documentation/user-particles.html">user particles</a></li>
 </ul>
@@ -115,38 +121,13 @@ resources and such, then invoke the <code class="docutils literal notranslate"><
 the <code class="docutils literal notranslate"><span class="pre">entrypoint</span></code> was the <code class="docutils literal notranslate"><span class="pre">main</span></code> function.</p>
 </section>
 <section id="examples">
-<h2>examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
-<p>Below follows examples in <code class="docutils literal notranslate"><span class="pre">yaml</span></code> and <code class="docutils literal notranslate"><span class="pre">json</span></code> <em>(casual can also handle <code class="docutils literal notranslate"><span class="pre">ini</span></code> and <code class="docutils literal notranslate"><span class="pre">xml</span></code>)</em></p>
-<section id="yaml">
-<h3>yaml<a class="headerlink" href="#yaml" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
-<span class="nt">executable</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">resources</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;rm-mockup&quot;</span>
-<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;resource-1&quot;</span>
-<span class="w">      </span><span class="nt">note</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;the</span><span class="nv"> </span><span class="s">runtime</span><span class="nv"> </span><span class="s">configuration</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">this</span><span class="nv"> </span><span class="s">resource</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">correlated</span><span class="nv"> </span><span class="s">with</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">name</span><span class="nv"> </span><span class="s">&#39;resource-1&#39;</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">no</span><span class="nv"> </span><span class="s">group</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">needed</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">resource</span><span class="nv"> </span><span class="s">configuration&quot;</span>
-<span class="w">  </span><span class="nt">entrypoint</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;start&quot;</span>
-<span class="nn">...</span>
-</pre></div>
-</div>
-</section>
-<section id="json">
-<h3>json<a class="headerlink" href="#json" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;executable&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;resources&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rm-mockup&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;resource-1&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;the runtime configuration for this resource is correlated with the name &#39;resource-1&#39; - no group is needed for resource configuration&quot;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">],</span>
-<span class="w">        </span><span class="nt">&quot;entrypoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;start&quot;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</section>
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../../../../_downloads/6070e3db335de44b0deabbbc43094e1d/executable.yaml"><span class="xref download myst">build/executable.yaml</span></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../../../_downloads/a0bcf92221243bf2ad5c95c9ec1df3e1/executable.json"><span class="xref download myst">build/executable.json</span></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../../../_downloads/3aa197ca50cfe13c4d638149d25ef032/executable.xml"><span class="xref download myst">build/executable.xml</span></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../../../_downloads/346210cf2e26d2584216e3114f3c61ad/executable.ini"><span class="xref download myst">build/executable.ini</span></a></p></li>
+</ul>
 </section>
 </section>
 
@@ -185,7 +166,7 @@ the <code class="docutils literal notranslate"><span class="pre">entrypoint</spa
     <dl>
       <dt>Branches</dt>
       <dd><a href="executable.development.html">feature/1.7/main</a></dd>
-      <dd><a href="../../../../../../../patch/1.6/main/middleware/configuration/documentation/build/executable.development.html">patch/1.6/main</a></dd>
+      <dd><a href="../../../../../release-notes/middleware/configuration/documentation/build/executable.development.html">feature/1.7/release-notes</a></dd>
       <dd><a href="../../../../../../../release/1.6/middleware/configuration/documentation/build/executable.development.html">release/1.6</a></dd>
     </dl>
   </div>

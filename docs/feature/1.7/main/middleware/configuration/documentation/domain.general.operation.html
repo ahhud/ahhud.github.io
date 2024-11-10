@@ -45,7 +45,13 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">introduction</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../README.html">summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html">Get started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html#documentation">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html#contributing">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html#release-notes">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html#build-status">Build status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html#downloads">Downloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html#license">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../documentation/components.html">components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../documentation/user-particles.html">user particles</a></li>
 </ul>
@@ -57,6 +63,7 @@
 <li class="toctree-l2"><a class="reference internal" href="domain.gateway.operation.html">configuration gateway</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">configuration domain (general)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="domain.queue.operation.html">configuration queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domain.queue.operation.html#head">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="domain.transaction.operation.html">configuration transaction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="system.operation.html">configuration system</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../buffer/documentation/field.operation.html">field operation</a></li>
@@ -501,287 +508,13 @@ membership to the group.</p>
 <p>Note: For <em>service aliases</em>, it’s important to include the original name in <code class="docutils literal notranslate"><span class="pre">routes</span></code></p>
 </section>
 <section id="examples">
-<h2>examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
-<p>Below follows examples in <code class="docutils literal notranslate"><span class="pre">yaml</span></code> and <code class="docutils literal notranslate"><span class="pre">json</span></code> <em>(casual can also handle <code class="docutils literal notranslate"><span class="pre">ini</span></code> and <code class="docutils literal notranslate"><span class="pre">xml</span></code>)</em></p>
-<section id="yaml">
-<h3>yaml<a class="headerlink" href="#yaml" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
-<span class="nt">domain</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;domain-name&quot;</span>
-<span class="w">  </span><span class="nt">global</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">note</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&#39;domain</span><span class="nv"> </span><span class="s">global&#39;</span><span class="nv"> </span><span class="s">config.</span><span class="nv"> </span><span class="s">Aggregates</span><span class="nv"> </span><span class="s">right</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">left&quot;</span>
-<span class="w">    </span><span class="nt">service</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">note</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Will</span><span class="nv"> </span><span class="s">be</span><span class="nv"> </span><span class="s">used</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">services</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">not</span><span class="nv"> </span><span class="s">explicitly</span><span class="nv"> </span><span class="s">configured.&quot;</span>
-<span class="w">      </span><span class="nt">execution</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">timeout</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">duration</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2h&quot;</span>
-<span class="w">          </span><span class="nt">contract</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;linger&quot;</span>
-<span class="w">  </span><span class="nt">default</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">note</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&#39;default&#39;,</span><span class="nv"> </span><span class="s">fallback,</span><span class="nv"> </span><span class="s">configuration.</span><span class="nv"> </span><span class="s">Will</span><span class="nv"> </span><span class="s">only</span><span class="nv"> </span><span class="s">affect</span><span class="nv"> </span><span class="s">&#39;local&#39;</span><span class="nv"> </span><span class="s">configuration</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">will</span><span class="nv"> </span><span class="s">not</span><span class="nv"> </span><span class="s">aggregate</span><span class="nv"> </span><span class="s">&#39;between&#39;</span><span class="nv"> </span><span class="s">configurations&quot;</span>
-<span class="w">    </span><span class="nt">server</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">instances</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">      </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">      </span><span class="nt">memberships</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;customer-group&quot;</span>
-<span class="w">      </span><span class="nt">environment</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">variables</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;SOME_VARIABLE&quot;</span>
-<span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span>
-<span class="w">    </span><span class="nt">executable</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">instances</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">      </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">    </span><span class="nt">service</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">execution</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">timeout</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">duration</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;20s&quot;</span>
-<span class="w">      </span><span class="nt">visibility</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;discoverable&quot;</span>
-<span class="w">  </span><span class="nt">environment</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">variables</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;SOME_VARIABLE&quot;</span>
-<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;42&quot;</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;SOME_OTHER_VARIABLE&quot;</span>
-<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;some</span><span class="nv"> </span><span class="s">value&quot;</span>
-<span class="w">  </span><span class="nt">groups</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;common-group&quot;</span>
-<span class="w">      </span><span class="nt">note</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;group</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">logically</span><span class="nv"> </span><span class="s">groups</span><span class="nv"> </span><span class="s">&#39;common&#39;</span><span class="nv"> </span><span class="s">stuff&quot;</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;customer-group&quot;</span>
-<span class="w">      </span><span class="nt">note</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;group</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">logically</span><span class="nv"> </span><span class="s">groups</span><span class="nv"> </span><span class="s">&#39;customer&#39;</span><span class="nv"> </span><span class="s">stuff&quot;</span>
-<span class="w">      </span><span class="nt">resources</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;customer-db&quot;</span>
-<span class="w">      </span><span class="nt">dependencies</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;common-group&quot;</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;sales-group&quot;</span>
-<span class="w">      </span><span class="nt">note</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;group</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">logically</span><span class="nv"> </span><span class="s">groups</span><span class="nv"> </span><span class="s">&#39;customer&#39;</span><span class="nv"> </span><span class="s">stuff&quot;</span>
-<span class="w">      </span><span class="nt">resources</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;sales-db&quot;</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;event-queue&quot;</span>
-<span class="w">      </span><span class="nt">dependencies</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;customer-group&quot;</span>
-<span class="w">  </span><span class="nt">servers</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/some/path/customer-server-1&quot;</span>
-<span class="w">      </span><span class="nt">memberships</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;customer-group&quot;</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/some/path/customer-server-2&quot;</span>
-<span class="w">      </span><span class="nt">memberships</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;customer-group&quot;</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/some/path/sales-server&quot;</span>
-<span class="w">      </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;sales-pre&quot;</span>
-<span class="w">      </span><span class="nt">note</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;the</span><span class="nv"> </span><span class="s">only</span><span class="nv"> </span><span class="s">services</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">will</span><span class="nv"> </span><span class="s">be</span><span class="nv"> </span><span class="s">advertised</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">ones</span><span class="nv"> </span><span class="s">who</span><span class="nv"> </span><span class="s">matches</span><span class="nv"> </span><span class="s">regex</span><span class="nv"> </span><span class="s">\&quot;preSales.*\&quot;&quot;</span>
-<span class="w">      </span><span class="nt">instances</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
-<span class="w">      </span><span class="nt">memberships</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;sales-group&quot;</span>
-<span class="w">      </span><span class="nt">restrictions</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;preSales.*&quot;</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/some/path/sales-server&quot;</span>
-<span class="w">      </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;sales-post&quot;</span>
-<span class="w">      </span><span class="nt">note</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;he</span><span class="nv"> </span><span class="s">only</span><span class="nv"> </span><span class="s">services</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">will</span><span class="nv"> </span><span class="s">be</span><span class="nv"> </span><span class="s">advertised</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">ones</span><span class="nv"> </span><span class="s">who</span><span class="nv"> </span><span class="s">matches</span><span class="nv"> </span><span class="s">regex</span><span class="nv"> </span><span class="s">\&quot;postSales.*\&quot;&quot;</span>
-<span class="w">      </span><span class="nt">memberships</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;sales-group&quot;</span>
-<span class="w">      </span><span class="nt">restrictions</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;postSales.*&quot;</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/some/path/sales-broker&quot;</span>
-<span class="w">      </span><span class="nt">memberships</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;sales-group&quot;</span>
-<span class="w">      </span><span class="nt">environment</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">variables</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;SALES_BROKER_VARIABLE&quot;</span>
-<span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;556&quot;</span>
-<span class="w">      </span><span class="nt">resources</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;event-queue&quot;</span>
-<span class="w">  </span><span class="nt">executables</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/some/path/mq-server&quot;</span>
-<span class="w">      </span><span class="nt">arguments</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;--configuration&quot;</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;/path/to/configuration&quot;</span>
-<span class="w">      </span><span class="nt">memberships</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;common-group&quot;</span>
-<span class="w">  </span><span class="nt">services</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;a&quot;</span>
-<span class="w">      </span><span class="nt">execution</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">timeout</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">duration</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;64ms&quot;</span>
-<span class="w">          </span><span class="nt">contract</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;abort&quot;</span>
-<span class="w">      </span><span class="nt">routes</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;b&quot;</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;c&quot;</span>
-<span class="w">      </span><span class="nt">visibility</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;undiscoverable&quot;</span>
-<span class="nn">...</span>
-</pre></div>
-</div>
-</section>
-<section id="json">
-<h3>json<a class="headerlink" href="#json" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;domain&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain-name&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;global&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&#39;domain global&#39; config. Aggregates right to left&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;service&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Will be used for services that are not explicitly configured.&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;execution&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">&quot;duration&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2h&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;contract&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;linger&quot;</span>
-<span class="w">                    </span><span class="p">}</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="nt">&quot;default&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&#39;default&#39;, fallback, configuration. Will only affect &#39;local&#39; configuration and will not aggregate &#39;between&#39; configurations&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;server&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;instances&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;restart&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;memberships&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="s2">&quot;customer-group&quot;</span>
-<span class="w">                </span><span class="p">],</span>
-<span class="w">                </span><span class="nt">&quot;environment&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;variables&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                        </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SOME_VARIABLE&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span>
-<span class="w">                        </span><span class="p">}</span>
-<span class="w">                    </span><span class="p">]</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="nt">&quot;executable&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;instances&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;restart&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="nt">&quot;service&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;execution&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">&quot;duration&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;20s&quot;</span>
-<span class="w">                    </span><span class="p">}</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="nt">&quot;visibility&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;discoverable&quot;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="nt">&quot;environment&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;variables&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SOME_VARIABLE&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;42&quot;</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SOME_OTHER_VARIABLE&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;some value&quot;</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">]</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="nt">&quot;groups&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;common-group&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;group that logically groups &#39;common&#39; stuff&quot;</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;customer-group&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;group that logically groups &#39;customer&#39; stuff&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;resources&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="s2">&quot;customer-db&quot;</span>
-<span class="w">                </span><span class="p">],</span>
-<span class="w">                </span><span class="nt">&quot;dependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="s2">&quot;common-group&quot;</span>
-<span class="w">                </span><span class="p">]</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sales-group&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;group that logically groups &#39;customer&#39; stuff&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;resources&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="s2">&quot;sales-db&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="s2">&quot;event-queue&quot;</span>
-<span class="w">                </span><span class="p">],</span>
-<span class="w">                </span><span class="nt">&quot;dependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="s2">&quot;customer-group&quot;</span>
-<span class="w">                </span><span class="p">]</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">],</span>
-<span class="w">        </span><span class="nt">&quot;servers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/some/path/customer-server-1&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;memberships&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="s2">&quot;customer-group&quot;</span>
-<span class="w">                </span><span class="p">]</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/some/path/customer-server-2&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;memberships&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="s2">&quot;customer-group&quot;</span>
-<span class="w">                </span><span class="p">]</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/some/path/sales-server&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;alias&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sales-pre&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;the only services that will be advertised are the ones who matches regex \&quot;preSales.*\&quot;&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;instances&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;memberships&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="s2">&quot;sales-group&quot;</span>
-<span class="w">                </span><span class="p">],</span>
-<span class="w">                </span><span class="nt">&quot;restrictions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="s2">&quot;preSales.*&quot;</span>
-<span class="w">                </span><span class="p">]</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/some/path/sales-server&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;alias&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sales-post&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;he only services that will be advertised are the ones who matches regex \&quot;postSales.*\&quot;&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;memberships&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="s2">&quot;sales-group&quot;</span>
-<span class="w">                </span><span class="p">],</span>
-<span class="w">                </span><span class="nt">&quot;restrictions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="s2">&quot;postSales.*&quot;</span>
-<span class="w">                </span><span class="p">]</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/some/path/sales-broker&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;memberships&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="s2">&quot;sales-group&quot;</span>
-<span class="w">                </span><span class="p">],</span>
-<span class="w">                </span><span class="nt">&quot;environment&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;variables&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                        </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SALES_BROKER_VARIABLE&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;556&quot;</span>
-<span class="w">                        </span><span class="p">}</span>
-<span class="w">                    </span><span class="p">]</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="nt">&quot;resources&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="s2">&quot;event-queue&quot;</span>
-<span class="w">                </span><span class="p">]</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">],</span>
-<span class="w">        </span><span class="nt">&quot;executables&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/some/path/mq-server&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;arguments&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="s2">&quot;--configuration&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="s2">&quot;/path/to/configuration&quot;</span>
-<span class="w">                </span><span class="p">],</span>
-<span class="w">                </span><span class="nt">&quot;memberships&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="s2">&quot;common-group&quot;</span>
-<span class="w">                </span><span class="p">]</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">],</span>
-<span class="w">        </span><span class="nt">&quot;services&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;execution&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">&quot;duration&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;64ms&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;contract&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;abort&quot;</span>
-<span class="w">                    </span><span class="p">}</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="nt">&quot;routes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="s2">&quot;b&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="s2">&quot;c&quot;</span>
-<span class="w">                </span><span class="p">],</span>
-<span class="w">                </span><span class="nt">&quot;visibility&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;undiscoverable&quot;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">]</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</section>
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../../../_downloads/90e93052e88ffed8e87c92e4ef3dd039/general.yaml"><span class="xref download myst">domain/general.yaml</span></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../../_downloads/f0bac6857c5a2176c693dc9321429864/general.json"><span class="xref download myst">domain/general.json</span></a></p></li>
+<li><p><a class="reference internal" href="#sample/domain./eneral.xml"><span class="xref myst">domain/general.xml</span></a></p></li>
+<li><p><a class="reference internal" href="#sample/domain./eneral.ini"><span class="xref myst">domain/general.ini</span></a></p></li>
+</ul>
 </section>
 </section>
 
@@ -820,7 +553,7 @@ membership to the group.</p>
     <dl>
       <dt>Branches</dt>
       <dd><a href="domain.general.operation.html">feature/1.7/main</a></dd>
-      <dd><a href="../../../../../../patch/1.6/main/middleware/configuration/documentation/domain.general.operation.html">patch/1.6/main</a></dd>
+      <dd><a href="../../../../release-notes/middleware/configuration/documentation/domain.general.operation.html">feature/1.7/release-notes</a></dd>
       <dd><a href="../../../../../../release/1.6/middleware/configuration/documentation/domain.general.operation.html">release/1.6</a></dd>
     </dl>
   </div>

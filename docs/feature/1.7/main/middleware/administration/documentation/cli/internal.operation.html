@@ -45,7 +45,13 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">introduction</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../README.html">summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html">Get started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#documentation">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#contributing">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#release-notes">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#build-status">Build status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#downloads">Downloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html#license">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../documentation/components.html">components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../documentation/user-particles.html">user particles</a></li>
 </ul>
@@ -57,6 +63,7 @@
 <li class="toctree-l3"><a class="reference internal" href="casual.operation.html">casual</a></li>
 <li class="toctree-l3"><a class="reference internal" href="buffer.operation.html">casual buffer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="call.operation.html">casual call</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.operation.html">casual configuration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="describe.operation.html">casual describe</a></li>
 <li class="toctree-l3"><a class="reference internal" href="discovery.operation.html">casual discovery</a></li>
 <li class="toctree-l3"><a class="reference internal" href="domain.operation.html">casual domain</a></li>
@@ -71,6 +78,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.gateway.operation.html">configuration gateway</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.general.operation.html">configuration domain (general)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.queue.operation.html">configuration queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.queue.operation.html#head">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/domain.transaction.operation.html">configuration transaction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../configuration/documentation/system.operation.html">configuration system</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../buffer/documentation/field.operation.html">field operation</a></li>
@@ -113,30 +121,31 @@
              
   <section id="casual-internal">
 <h1>casual internal<a class="headerlink" href="#casual-internal" title="Permalink to this heading">¶</a></h1>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>host#<span class="w"> </span>casual<span class="w"> </span>--help<span class="w"> </span>internal
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">host# casual --help internal</span>
 
-<span class="w">  </span>internal<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span>
-<span class="w">        </span>internal<span class="w"> </span>casual<span class="w"> </span>stuff<span class="w"> </span><span class="k">for</span><span class="w"> </span>troubleshooting<span class="w"> </span>etc...
+<span class="go">internal [0..1]</span>
+<span class="go">     internal casual stuff for troubleshooting etc...</span>
 
-<span class="w">    </span>SUB<span class="w"> </span>OPTIONS
-<span class="w">      </span>--state-dump<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>&lt;value&gt;<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">0</span>..*<span class="o">]</span>
-<span class="w">            </span>dump<span class="w"> </span>state<span class="w"> </span>to<span class="w"> </span>casual.log<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>provided<span class="w"> </span>pids,<span class="w"> </span><span class="k">if</span><span class="w"> </span>the<span class="w"> </span>pid<span class="w"> </span>is<span class="w"> </span>able
+<span class="go">   SUB OPTIONS:</span>
 
-<span class="w">      </span>--log-path<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>&lt;path&gt;,<span class="w"> </span>&lt;pid&gt;<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">1</span>..*<span class="o">]</span>
-<span class="w">            </span>relocate<span class="w"> </span>the<span class="w"> </span>log-file<span class="w"> </span><span class="k">for</span><span class="w"> </span>provided<span class="w"> </span>pids
-<span class="w">            </span>
-<span class="w">            </span>Note:<span class="w"> </span>only<span class="w"> </span>works<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="s1">&#39;servers&#39;</span><span class="w"> </span>with<span class="w"> </span>a<span class="w"> </span>message<span class="w"> </span>pump
+<span class="go">      --state-dump [0..1]  (&lt;value&gt;) [0..*]</span>
+<span class="go">           dump state to casual.log for the provided pids, if the pid is able</span>
 
-<span class="w">      </span>--log-expression-inclusive<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>&lt;expression&gt;,<span class="w"> </span>&lt;pid&gt;<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">1</span>..*<span class="o">]</span>
-<span class="w">            </span>updates<span class="w"> </span>the<span class="w"> </span>_inclusive<span class="w"> </span>category<span class="w"> </span>filter_<span class="w"> </span><span class="o">(</span>regex<span class="o">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>provided<span class="w"> </span>pids
-<span class="w">            </span>
-<span class="w">            </span>Works<span class="w"> </span>the<span class="w"> </span>same<span class="w"> </span>as<span class="w"> </span>the<span class="w"> </span><span class="sb">`</span>CASUAL_LOG<span class="sb">`</span><span class="w"> </span>variable
-<span class="w">            </span>Note:<span class="w"> </span>only<span class="w"> </span>works<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="s1">&#39;servers&#39;</span><span class="w"> </span>with<span class="w"> </span>a<span class="w"> </span>message<span class="w"> </span>pump
+<span class="go">      --log-path [0..1]  (&lt;path&gt;, &lt;pid&gt;) [1..*]</span>
+<span class="go">           relocate the log-file for provided pids</span>
+<span class="go">           </span>
+<span class="go">           Note: only works for &#39;servers&#39; with a message pump</span>
 
-<span class="w">      </span>--message-count<span class="w"> </span><span class="o">[</span><span class="m">0</span>..1<span class="o">]</span><span class="w">  </span><span class="o">(</span>&lt;value&gt;<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">1</span><span class="o">]</span>
-<span class="w">            </span>lists<span class="w"> </span>message<span class="w"> </span>count<span class="w"> </span>metrics<span class="w"> </span><span class="k">for</span><span class="w"> </span>a<span class="w"> </span>given<span class="w"> </span>pid
-<span class="w">            </span>
-<span class="w">            </span>The<span class="w"> </span>pid<span class="w"> </span>needs<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>a<span class="w"> </span>casual<span class="w"> </span>server
+<span class="go">      --log-expression-inclusive [0..1]  (&lt;expression&gt;, &lt;pid&gt;) [1..*]</span>
+<span class="go">           updates the _inclusive category filter_ (regex) for provided pids</span>
+<span class="go">           </span>
+<span class="go">           Works the same as the `CASUAL_LOG` variable</span>
+<span class="go">           Note: only works for &#39;servers&#39; with a message pump</span>
+
+<span class="go">      --message-count [0..1]  (&lt;value&gt;) [1]</span>
+<span class="go">           lists message count metrics for a given pid</span>
+<span class="go">           </span>
+<span class="go">           The pid needs to be a casual server</span>
 </pre></div>
 </div>
 </section>
@@ -176,7 +185,7 @@
     <dl>
       <dt>Branches</dt>
       <dd><a href="internal.operation.html">feature/1.7/main</a></dd>
-      <dd><a href="../../../../../../../patch/1.6/main/middleware/administration/documentation/cli/internal.operation.html">patch/1.6/main</a></dd>
+      <dd><a href="../../../../../release-notes/middleware/administration/documentation/cli/internal.operation.html">feature/1.7/release-notes</a></dd>
       <dd><a href="../../../../../../../release/1.6/middleware/administration/documentation/cli/internal.operation.html">release/1.6</a></dd>
     </dl>
   </div>
