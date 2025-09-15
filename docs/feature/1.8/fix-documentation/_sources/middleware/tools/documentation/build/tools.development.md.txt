@@ -1,4 +1,0 @@
-# development tools
-
-- [casual-build-server](casual-build-server.development.md)
-- [casual-build-executable](casual-build-executable.development.md)
